@@ -38,7 +38,7 @@ class Character extends MovableObject{
     }
     animate() {
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_SWIM.length;
+            let i = this.currentImage % this.IMAGES_IDLE.length;
             let path = this.IMAGES_IDLE[i];
             this.img = this.imageCache[path];
             this.currentImage++;
