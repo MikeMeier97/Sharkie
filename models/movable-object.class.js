@@ -8,9 +8,6 @@ class MovableObject {
     currentImage = 0;
     speed = 0.15; 
     otherDirection = false;
-    moveRight() {
-
-    }
     loadImages(arr) {
         arr.forEach((path) => {
             let img = new Image(); 

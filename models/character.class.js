@@ -63,7 +63,7 @@ class Character extends MovableObject{
                 this.img = this.imageCache[path];
                 this.currentImage++;
         } else {
-            let i = this.currentImage % this.IMAGES_IDLE.length;
+                let i = this.currentImage % this.IMAGES_IDLE.length;
                 let path = this.IMAGES_IDLE[i];
                 this.img = this.imageCache[path];
                 this.currentImage++;
