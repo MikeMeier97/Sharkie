@@ -7,6 +7,7 @@ class MovableObject {
     width = 100;
     currentImage = 0;
     speed = 0.15; 
+    otherDirection = false;
     moveRight() {
 
     }

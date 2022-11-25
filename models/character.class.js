@@ -2,6 +2,7 @@ class Character extends MovableObject{
     height = 250;
     width = 250;
     y = 100;
+    speed = 5;
     IMAGES_IDLE = [
         './assets/img/sharkie/1.IDLE/1.png',
         './assets/img/sharkie/1.IDLE/3.png',
@@ -33,15 +34,34 @@ class Character extends MovableObject{
     world;
     constructor() {
         super().loadImage('./assets/img/sharkie/1.IDLE/1.png');
-        this.loadImages(this.IMAGES_IDLE); 
+        this.loadImages(this.IMAGES_SWIM); 
         this.animate();
     }
     animate() {
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_IDLE.length;
-            let path = this.IMAGES_IDLE[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
-        }, 300);
+            if(this.world.keyboard.RIGHT){ 
+                this.x += this.speed;
+                this.otherDirection = false;
+            }
+            if(this.world.keyboard.LEFT){ 
+                this.x -= this.speed;
+                this.otherDirection = true;
+            }
+            if(this.world.keyboard.UP){ 
+                this.y -= this.speed;
+            }
+            if(this.world.keyboard.DOWN){ 
+                this.y += this.speed;
+            }
+            this.world.camera_x = -this.x;
+        }, 1000 / 60);
+        setInterval(() => {
+            if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.DOWN || this.world.keyboard.UP){
+                let i = this.currentImage % this.IMAGES_SWIM.length;
+                let path = this.IMAGES_SWIM[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+        }
+        }, 100);
     }
 }
