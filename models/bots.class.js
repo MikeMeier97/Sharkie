@@ -11,9 +11,9 @@ class Bot extends MovableObject{
     constructor() {
         super().loadImage('./assets/img/enemy/1.Puffer fish/1.Swim/1.swim1.png');
         this.loadImages(this.IMAGES_SWIM);
-        this.x = 200 + Math.random() * 500;
+        this.x = 200 + Math.random() * 3600;
         this.y = 50 + Math.random() * 250;
-        this.speed = 0.4 + Math.random() * 0.25; 
+        this.speed = 0.4 + Math.random() * 1; 
 
         this.animate();
     }
