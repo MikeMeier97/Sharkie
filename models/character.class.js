@@ -32,6 +32,7 @@ class Character extends MovableObject{
         './assets/img/sharkie/3.Swim/6.png'
     ];
     world;
+    walking_sound = new Audio('./audio/swim.mp3');
     constructor() {
         super().loadImage('./assets/img/sharkie/1.IDLE/1.png');
         this.loadImages(this.IMAGES_SWIM);
