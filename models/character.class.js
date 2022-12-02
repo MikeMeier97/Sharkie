@@ -41,34 +41,30 @@ class Character extends MovableObject{
     }
     animate() {
         setInterval(() => {
+            this.walking_sound.pause();
             if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x){ 
                 this.x += this.speed;
                 this.otherDirection = false;
+                    this.walking_sound.play();
             }
             if(this.world.keyboard.LEFT && this.x > 0){ 
                 this.x -= this.speed;
                 this.otherDirection = true;
+                    this.walking_sound.play();
             }
             if(this.world.keyboard.UP && this.y > -100){ 
                 this.y -= this.speed;
+                    this.walking_sound.play();
             }
             if(this.world.keyboard.DOWN && this.y < 280){ 
                 this.y += this.speed;
+                    this.walking_sound.play();
             }
             this.world.camera_x = -this.x - 10;
         }, 1000 / 60);
         setInterval(() => {
             if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.DOWN || this.world.keyboard.UP){
-                let i = this.currentImage % this.IMAGES_SWIM.length;
-                let path = this.IMAGES_SWIM[i];
-                this.img = this.imageCache[path];
-                this.currentImage++;
-        } else {
-                let i = this.currentImage % this.IMAGES_IDLE.length;
-                let path = this.IMAGES_IDLE[i];
-                this.img = this.imageCache[path];
-                this.currentImage++;
+                this.playAnimation(this.IMAGES_SWIM);
+            }}, 200);
         }
-        }, 200);
-    }
 }

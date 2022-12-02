@@ -17,7 +17,8 @@ const level1 = new Level(
     new Bot(),
     new Bot(),
     new Bot(),
-    new Bot()
+    new Bot(),
+    new Endboss()
     ],
     [
         new BackgroundObject('./assets/img/background/Layers/5. Water/D1.png', 0),
