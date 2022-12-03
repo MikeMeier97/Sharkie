@@ -1,4 +1,9 @@
 class Endboss extends MovableObject {
+    height = 300;
+    width = 300;
+    x = 3850;
+    y = 50; 
+
     IMAGES_SWIM = [
         './assets/img/enemy/3 Final Enemy/2.floating/1.png',
         './assets/img/enemy/3 Final Enemy/2.floating/2.png',
@@ -17,10 +22,6 @@ class Endboss extends MovableObject {
     constructor() {
         super().loadImage(this.IMAGES_SWIM[0]);
         this.loadImages(this.IMAGES_SWIM);
-        this.x = 3850; 
-        this.y = 50;
-        this.height = 300;
-        this.width = 300; 
         this.animate();
     }
     animate() {
