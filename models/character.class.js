@@ -31,12 +31,34 @@ class Character extends MovableObject{
         './assets/img/sharkie/3.Swim/5.png',
         './assets/img/sharkie/3.Swim/6.png'
     ];
+    IMAGES_DEAD = [
+        './assets/img/sharkie/6.dead/1.Poisoned/1.png',
+        './assets/img/sharkie/6.dead/1.Poisoned/2.png',
+        './assets/img/sharkie/6.dead/1.Poisoned/3.png',
+        './assets/img/sharkie/6.dead/1.Poisoned/4.png',
+        './assets/img/sharkie/6.dead/1.Poisoned/5.png',
+        './assets/img/sharkie/6.dead/1.Poisoned/6.png',
+        './assets/img/sharkie/6.dead/1.Poisoned/7.png',
+        './assets/img/sharkie/6.dead/1.Poisoned/8.png',
+        './assets/img/sharkie/6.dead/1.Poisoned/9.png',
+        './assets/img/sharkie/6.dead/1.Poisoned/10.png',
+        './assets/img/sharkie/6.dead/1.Poisoned/11.png',
+        './assets/img/sharkie/6.dead/1.Poisoned/12.png'
+    ];
+    IMAGES_HURT = [
+        './assets/img/sharkie/5.Hurt/1.Poisoned/2.png',
+        './assets/img/sharkie/5.Hurt/1.Poisoned/3.png',
+        './assets/img/sharkie/5.Hurt/1.Poisoned/4.png',
+        './assets/img/sharkie/5.Hurt/1.Poisoned/5.png',
+    ];
     world;
     walking_sound = new Audio('./audio/swim.mp3');
     constructor() {
         super().loadImage('./assets/img/sharkie/1.IDLE/1.png');
         this.loadImages(this.IMAGES_SWIM);
-        this.loadImages(this.IMAGES_IDLE);  
+        this.loadImages(this.IMAGES_IDLE); 
+        this.loadImages(this.IMAGES_HURT);
+        this.loadImages(this.IMAGES_DEAD); 
         this.animate();
     }
     animate() {
@@ -63,8 +85,15 @@ class Character extends MovableObject{
             this.world.camera_x = -this.x - 10;
         }, 1000 / 60);
         setInterval(() => {
-            if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.DOWN || this.world.keyboard.UP){
+            if(this.isDead()) {
+                this.playAnimation(this.IMAGES_DEAD);
+            } else if(this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURT);
+            } else if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.DOWN || this.world.keyboard.UP){
                 this.playAnimation(this.IMAGES_SWIM);
-            }}, 200);
+            } else {
+                this.playAnimation(this.IMAGES_IDLE);
+            }
+        }, 200);
         }
 }
