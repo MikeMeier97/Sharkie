@@ -9,6 +9,7 @@ class MovableObject {
     speed = 0.15; 
     energy = 100;
     lastHit = 0; 
+    deadTime = 0; 
     otherDirection = false;
     loadImages(arr) {
         arr.forEach((path) => {
@@ -61,12 +62,18 @@ class MovableObject {
         this.energy -= 10;
         if(this.energy < 0) {
             this.energy = 0; 
+            this.deadTime = new Date().getTime();
         } else {
             this.lastHit = new Date().getTime();
         }
     }
     isDead() {
-        return this.energy == 0; 
+        return this.energy == 0;
+    }
+    dead() {
+        let timepassed = new Date().getTime() - this.deadTime;
+        timepassed = timepassed / 1000; 
+        return timepassed < 3; 
     }
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit;
