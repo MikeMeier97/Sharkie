@@ -6,6 +6,7 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new Statusbar();
+
     constructor(canvas){
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
