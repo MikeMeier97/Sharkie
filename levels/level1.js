@@ -9,17 +9,7 @@ const level1 = new Level(
     new Bot(),
     new Bot(),
     new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Endboss(),
-    new Coin()
+    new Endboss()
     ],
     [
         new BackgroundObject('./assets/img/background/Layers/5. Water/D1.png', 0),
@@ -52,5 +42,10 @@ const level1 = new Level(
         new BackgroundObject('./assets/img/background/Layers/3.Fondo 1/D2.png', 720*5),
         new BackgroundObject('./assets/img/background/Layers/2. Floor/D2.png', 720*5),
         new BackgroundObject('./assets/img/background/Layers/1. Light/2.png',720*5)
+    ],
+    [
+        new Coin(600, 350),
+        new Coin(700, 350),
+        new Coin(900, 350)
     ]
 ); 

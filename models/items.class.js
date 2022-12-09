@@ -1,8 +1,8 @@
 class Coin extends MovableObject {
+    y; 
+    x;
     height = 30;
     width = 30;
-    x = 38;
-    y = 50; 
     IMAGES_COIN = [
         './assets/img/marcadores/1. Coins/1.png',
         './assets/img/marcadores/1. Coins/2.png',
@@ -10,9 +10,11 @@ class Coin extends MovableObject {
         './assets/img/marcadores/1. Coins/4.png'
     ];
 
-    constructor(){
-        super();
-        this.loadimages(this.IMAGES_COIN);
+    constructor(x, y){
+        super().loadImage(this.IMAGES_COIN[0]);
+        this.loadImages(this.IMAGES_COIN);
+        this.y = y; 
+        this.x = x; 
         this.animate();
     }
 

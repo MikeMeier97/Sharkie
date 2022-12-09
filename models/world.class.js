@@ -35,8 +35,9 @@ class World {
         this.addToMap(this.statusBar);
         this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
+        
         this.addObjectsToMap(this.level.enemies);
-
+        this.addObjectsToMap(this.level.coins);
         this.ctx.translate(-this.camera_x, 0);
 
         let self = this;
