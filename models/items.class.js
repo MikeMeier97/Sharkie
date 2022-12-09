@@ -26,10 +26,8 @@ class Coin extends MovableObject {
 }
 
 class Bottle extends Coin {
-    height = 30;
-    width = 30;
-    x = 28;
-    y = 50; 
+    height = 80;
+    width = 60;
     IMAGES_BOTTLE = [
         './assets/img/marcadores/Posión/Animada/1.png',
         './assets/img/marcadores/Posión/Animada/2.png',
@@ -40,9 +38,11 @@ class Bottle extends Coin {
         './assets/img/marcadores/Posión/Animada/7.png',
         './assets/img/marcadores/Posión/Animada/8.png'
     ];
-    constructor() {
+    constructor(x, y) {
         super().loadImage(this.IMAGES_BOTTLE[0]);
-        this.loadimages(this.IMAGES_BOTTLE);
+        this.loadImages(this.IMAGES_BOTTLE);
+        this.x = x; 
+        this.y = y;
         this.animate();
     }
     animate() {
