@@ -6,10 +6,10 @@ class MovableObject extends DrawableObject {
     otherDirection = false;
 
     isColliding(mo) {
-        return this.x + this.width - 20 > mo.x &&
+        return this.x + this.width > mo.x &&
         this.y + this.height > mo.y &&
         this.x < mo.x && 
-        this.y < mo.y + mo.height - 140;
+        this.y < mo.y + mo.height;
     }
     moveLeft() {
         this.x -= this.speed;
