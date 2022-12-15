@@ -6,6 +6,8 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new Statusbar();
+    bottleBar = new Bottlebar();
+    coinBar = new Coinbar();
     throwableObjects = [];
 
 
@@ -15,10 +17,9 @@ class World {
         this.keyboard = keyboard;
         this.draw();    
         this.setWorld();
-        this.checkCollisions();
         this.run();
     }
-    checkCollisions() {
+    checkCollisionsEnemy() {
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
                 this.character.hit();
@@ -26,9 +27,20 @@ class World {
             }
         });
     }
+    checkCollisionsCoin(){
+        this.level.coins.forEach((coin) => {
+            if(this.character.isColliding(coin)) {
+                if(this.character.coinLvl < 100){
+                this.character.coinLvl += 20;
+                this.coinBar.setPercentage(this.character.coinLvl);
+                this.level.coins.splice(0, 1);
+            }}
+        });
+    }
     run() {
         setInterval(() => {
-            this.checkCollisions();
+            this.checkCollisionsEnemy();
+            this.checkCollisionsCoin();
             this.checkThrowobjects(); 
         }, 200);
     }
@@ -46,6 +58,8 @@ class World {
         this.addObjectsToMap(this.level.backgroundObjects);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.statusBar);
+        this.addToMap(this.bottleBar);
+        this.addToMap(this.coinBar);
         this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
         

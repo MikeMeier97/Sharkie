@@ -1,6 +1,8 @@
 class MovableObject extends DrawableObject {
     speed = 0.15; 
     energy = 100;
+    coinLvl = 0; 
+    bottleLvl = 0; 
     lastHit = 0; 
     deadTime = 0; 
     otherDirection = false;
