@@ -37,17 +37,30 @@ class World {
             }}
         });
     }
+    checkCollisionsBottle() {
+        this.level.bottle.forEach((bottle) => {
+            if(this.character.isColliding(bottle)) {
+                if(this.character.bottleLvl < 100) {
+                    this.character.bottleLvl += 20;
+                    this.bottleBar.setPercentage(this.character.bottleLvl);
+                    this.level.bottle.splice(0, 1);
+                }}
+        });
+    }
     run() {
         setInterval(() => {
             this.checkCollisionsEnemy();
             this.checkCollisionsCoin();
+            this.checkCollisionsBottle();
             this.checkThrowobjects(); 
         }, 200);
     }
     checkThrowobjects() {
-        if(this.keyboard.D){
+        if(this.keyboard.D && this.character.bottleLvl > 0){
             let bottle = new ThrowableObject(this.character.x, this.character.y);
             this.throwableObjects.push(bottle);
+            this.character.bottleLvl -= 20; 
+            this.bottleBar.setPercentage(this.character.bottleLvl);
         }
     }
     draw() { 
