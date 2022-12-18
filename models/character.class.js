@@ -103,7 +103,6 @@ class Character extends MovableObject{
                 setTimeout(() => {
                     this.gameOver();
                 }, 4000);
-                
             } else if(this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
             } else if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.DOWN || this.world.keyboard.UP){

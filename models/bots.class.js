@@ -22,10 +22,7 @@ class PufferFish extends MovableObject{
             this.moveLeft();
         }, 1000 / 60);
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_PUFFERFISH.length;
-            let path = this.IMAGES_PUFFERFISH[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_PUFFERFISH);
         }, 100);
     }
 }
@@ -61,10 +58,7 @@ class JellyFish extends MovableObject{
             }
         }, 50);
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_JELLYFISH.length;
-            let path = this.IMAGES_JELLYFISH[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_JELLYFISH);
         }, 200);
     }
 }
