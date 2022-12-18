@@ -22,7 +22,7 @@ class DrawableObject {
         });
     }
     drawFrame(ctx) {
-        if(this instanceof Character || this instanceof Bot) {
+        if(this instanceof Character || this instanceof PufferFish) {
         ctx.beginPath();
         ctx.lineWidth = "5";
         ctx.strokeStyle = "transparent";

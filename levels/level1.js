@@ -1,14 +1,15 @@
 const level1 = new Level(
     [
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
-    new Bot(),
+    new PufferFish(),
+    new PufferFish(),
+    new PufferFish(),
+    new PufferFish(),
+    new PufferFish(),
+    new PufferFish(),
+    new PufferFish(),
+    new PufferFish(),
+    new PufferFish(),
+    new JellyFish(),
     new Endboss()
     ],
     [
