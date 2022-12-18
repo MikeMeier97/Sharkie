@@ -32,6 +32,9 @@ class PufferFish extends MovableObject{
 class JellyFish extends MovableObject{
     width = 80; 
     height = 80;
+    ceilingHeight = 400;
+    fishHeight = 0;
+    swimDirection = 1;
     IMAGES_JELLYFISH = [
        '../assets/img/enemy/2 Jelly fish/Súper dangerous/Pink 1.png',
        '../assets/img/enemy/2 Jelly fish/Súper dangerous/Pink 2.png',
@@ -47,18 +50,16 @@ class JellyFish extends MovableObject{
 
         this.animate();
     }
-    upDownLoop() {
-                if(this.y < 400) {
-                this.moveDown(); 
-            } 
-                if(this.y > 0) {
-                this.moveUp(); 
-            }
-    }
     animate() {
         setInterval(() => {
-            this.upDownLoop();
-        }, 500);
+            this.y += this.swimDirection * this.speed;
+            if(this.y > this.ceilingHeight) {
+                this.swimDirection = -1; 
+            } 
+            if (this.y < 0) {
+                this.swimDirection = 1; 
+            }
+        }, 50);
         setInterval(() => {
             let i = this.currentImage % this.IMAGES_JELLYFISH.length;
             let path = this.IMAGES_JELLYFISH[i];

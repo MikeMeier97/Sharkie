@@ -2,7 +2,7 @@ class Character extends MovableObject{
     height = 250;
     width = 250;
     y = 100;
-    speed = 7;
+    speed = 8;
     offset = {
         top: 160,
         left: 0, 
@@ -67,6 +67,13 @@ class Character extends MovableObject{
         this.loadImages(this.IMAGES_DEAD); 
         this.animate();
     }
+    gameOver() {
+        document.getElementById('gameContext').innerHTML = ``; 
+        document.getElementById('gameContext').innerHTML = `<div class="gameOver">
+        <img src="./assets/img/botones/Tittles/Game Over/Recurso 9.png">
+        <img class="tryAgainIcon" onclick="window.location.reload();" src="./assets/img/botones/Try again/Recurso 16.png">
+        </div>`; 
+    }
     animate() {
         setInterval(() => {
             this.walking_sound.pause();
@@ -93,6 +100,10 @@ class Character extends MovableObject{
         setInterval(() => {
             if(this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
+                setTimeout(() => {
+                    this.gameOver();
+                }, 4000);
+                
             } else if(this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
             } else if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.DOWN || this.world.keyboard.UP){
@@ -102,4 +113,5 @@ class Character extends MovableObject{
             }
         }, 200);
         }
+        
 }

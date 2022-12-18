@@ -92,6 +92,7 @@ class World {
             this.addToMap(o);
         });
     }
+    
     addToMap(mo) {
         if(mo.otherDirection) {
             this.flipImage(mo);
