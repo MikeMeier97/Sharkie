@@ -10,7 +10,6 @@ class World {
     coinBar = new Coinbar();
     throwableObjects = [];
 
-
     constructor(canvas){
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
