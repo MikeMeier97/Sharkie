@@ -47,15 +47,23 @@ class JellyFish extends MovableObject{
 
         this.animate();
     }
+    upDownLoop() {
+                if(this.y < 400) {
+                this.moveDown(); 
+            } 
+                if(this.y > 0) {
+                this.moveUp(); 
+            }
+    }
     animate() {
         setInterval(() => {
-            this.moveUp();
-        }, 1000 / 60);
+            this.upDownLoop();
+        }, 500);
         setInterval(() => {
             let i = this.currentImage % this.IMAGES_JELLYFISH.length;
             let path = this.IMAGES_JELLYFISH[i];
             this.img = this.imageCache[path];
             this.currentImage++;
-        }, 100);
+        }, 200);
     }
 }
