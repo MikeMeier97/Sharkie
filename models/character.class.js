@@ -61,6 +61,7 @@ class Character extends MovableObject {
   walking_sound = new Audio("./audio/jump.wav");
   hurt_sound = new Audio('./audio/small-hit.wav');
   dead_sound = new Audio('./audio/dead-sound.mp3');
+  bubble_sound = new Audio('./audio/bubble-pop.wav');
   constructor() {
     super().loadImage("./assets/img/sharkie/1.IDLE/1.png");
     this.loadImages(this.IMAGES_SWIM);
@@ -86,6 +87,8 @@ class Character extends MovableObject {
         this.world.keyboard.DOWN ||
         this.world.keyboard.UP) {
         this.playAnimation(this.IMAGES_SWIM);
+      } else if(this.world.keyboard.D) {
+        this.bubble_sound.play();
       } else {
         this.playAnimation(this.IMAGES_IDLE);
       }
@@ -99,6 +102,7 @@ class Character extends MovableObject {
         setTimeout(() => {
           this.stopDeadAudio();
           this.loadGameOverScreen();
+          this.clearAllInterval();
         }, 2000);
     
   }
@@ -135,5 +139,8 @@ class Character extends MovableObject {
       this.walking_sound.play();
     }
     this.world.camera_x = -this.x - 10;
+  }
+  clearAllInterval() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
   }
 }

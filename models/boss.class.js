@@ -31,6 +31,8 @@ class Endboss extends MovableObject {
     "./assets/img/enemy/3 Final Enemy/2.floating/12.png",
     "./assets/img/enemy/3 Final Enemy/2.floating/13.png",
   ];
+  boss_audio_spawn = new Audio('./audio/boss-splash.mp3');
+  boss_background_music = new Audio('./audio/boss-music.mp3');
   constructor() {
     super().loadImage(this.IMAGES_BOSS_INTRO[0]);
     this.loadImages(this.IMAGES_BOSS_SWIM);
@@ -42,14 +44,29 @@ class Endboss extends MovableObject {
     setTimeout(() => {
     setInterval(() => {
       if(world.character.x > 3300) {
+          world.background_music.pause();
         if (i < 10) {
+          this.boss_audio_spawn.play();
           this.playAnimation(this.IMAGES_BOSS_INTRO);
         } else {
+          this.boss_audio_spawn.pause();
+          this.boss_background_music.play();
           this.playAnimation(this.IMAGES_BOSS_SWIM);
         }
         i++;
       }
     }, 150);
   }, 1000);
+  }
+
+  bossAudio() {
+   
+    setTimeout(() => {
+      this.boss_audio_spawn.play();
+    }, 200);
+    this.boss_audio_spawn.pause();
+    setTimeout(() => {
+      this.boss_background_music.play();
+    }, 1000);
   }
 }

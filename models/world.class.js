@@ -10,6 +10,8 @@ class World {
   coinBar = new Coinbar();
   throwableObjects = [];
   background_music = new Audio("./audio/game-music.mp3");
+  coin_sound = new Audio('./audio/coin-collected.mp3');
+  bottle_sound = new Audio('./audio/poison-collected.wav');
 
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
@@ -36,6 +38,7 @@ class World {
       if (this.character.isColliding(coin)) {
         if (this.character.coinLvl < 100) {
           this.character.coinLvl += 20;
+          this.coin_sound.play(); 
           this.coinBar.setPercentage(this.character.coinLvl);
           this.level.coins.splice(0, 1);
         }
@@ -47,6 +50,7 @@ class World {
       if (this.character.isColliding(bottle)) {
         if (this.character.bottleLvl < 100) {
           this.character.bottleLvl += 20;
+          this.bottle_sound.play();
           this.bottleBar.setPercentage(this.character.bottleLvl);
           this.level.bottle.splice(0, 1);
         }
@@ -123,4 +127,5 @@ class World {
     mo.x = mo.x * -1;
     this.ctx.restore();
   }
+  
 }
