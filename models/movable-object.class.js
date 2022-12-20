@@ -6,6 +6,7 @@ class MovableObject extends DrawableObject {
   lastHit = 0;
   deadTime = 0;
   otherDirection = false;
+  world;
   offset = {
     top: 0,
     left: 0,
@@ -53,6 +54,6 @@ class MovableObject extends DrawableObject {
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
-    return timepassed < 3;
+    return timepassed < 1;
   }
 }

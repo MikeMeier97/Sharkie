@@ -2,7 +2,6 @@ class Endboss extends MovableObject {
   height = 300;
   width = 300;
   energy = 100;
-  hadfirstContact = false;
   x = 3850;
   y = 50;
   IMAGES_BOSS_INTRO = [
@@ -40,18 +39,17 @@ class Endboss extends MovableObject {
   }
   animate() {
     let i = 0;
+    setTimeout(() => {
     setInterval(() => {
-      if (i < 10) {
-        this.playAnimation(this.IMAGES_BOSS_INTRO);
-      } else {
-        this.playAnimation(this.IMAGES_BOSS_SWIM);
-      }
-      i++;
-      console.log(this.world.camera_x);
-      if(this.camera_x < -3300 && !hadfirstContact) {
-        i = 0;
-        hadfirstContact = true; 
+      if(world.character.x > 3300) {
+        if (i < 10) {
+          this.playAnimation(this.IMAGES_BOSS_INTRO);
+        } else {
+          this.playAnimation(this.IMAGES_BOSS_SWIM);
+        }
+        i++;
       }
     }, 150);
+  }, 1000);
   }
 }

@@ -9,14 +9,19 @@ class World {
   bottleBar = new Bottlebar();
   coinBar = new Coinbar();
   throwableObjects = [];
+  background_music = new Audio("./audio/game-music.mp3");
 
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keyboard = keyboard;
+    this.background_music.play();
     this.draw();
     this.setWorld();
     this.run();
+  }
+  stopBackgroundMusic() {
+    this.background_music.pause();
   }
   checkCollisionsEnemy() {
     this.level.enemies.forEach((enemy) => {
