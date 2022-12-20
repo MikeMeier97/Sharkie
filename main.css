@@ -37,6 +37,15 @@ canvas {
 .tryAgainIcon {
   margin-top: 50px;
 }
+.tryAgainIconwin {
+  position: absolute;
+  top: 70vh; 
+  left: 35vw; 
+}
+.winscreen{
+  height: 100vh;
+  width: 100vw;
+}
 /* Smartphones width */
 @media only screen and (max-width: 720px) {
     canvas {

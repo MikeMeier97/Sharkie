@@ -110,14 +110,7 @@ class Character extends MovableObject {
     Audio.loop = false; 
     this.dead_sound.pause();
   }
-  loadGameOverScreen() {
-    document.getElementById("gameContext").innerHTML = ``;
-    document.getElementById("gameContext").innerHTML = `
-    <div class="gameOver">
-        <img src="./assets/img/botones/Tittles/Game Over/Recurso 9.png">
-        <img class="tryAgainIcon" onclick="window.location.reload();" src="./assets/img/botones/Try again/Recurso 16.png">
-    </div>`;
-  }
+ 
   moveAnimate() {
     this.walking_sound.pause();
     if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x && !this.isDead()) {
@@ -140,7 +133,5 @@ class Character extends MovableObject {
     }
     this.world.camera_x = -this.x - 10;
   }
-  clearAllInterval() {
-    for (let i = 1; i < 9999; i++) window.clearInterval(i);
-  }
+  
 }

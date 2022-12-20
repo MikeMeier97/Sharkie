@@ -13,7 +13,6 @@ class MovableObject extends DrawableObject {
     right: 0,
     bottom: 0,
   };
-
   isColliding(mo) {
     return (
       this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
@@ -55,5 +54,8 @@ class MovableObject extends DrawableObject {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
     return timepassed < 1;
+  }
+  clearAllInterval() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
   }
 }

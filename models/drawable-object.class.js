@@ -30,4 +30,19 @@ class DrawableObject {
       ctx.stroke();
     }
   }
+  loadGameOverScreen() {
+    document.getElementById("gameContext").innerHTML = ``;
+    document.getElementById("gameContext").innerHTML = `
+    <div class="gameOver">
+        <img src="./assets/img/botones/Tittles/Game Over/Recurso 9.png">
+        <img class="tryAgainIcon" onclick="window.location.reload();" src="./assets/img/botones/Try again/Recurso 16.png">
+    </div>`;
+  }
+  loadWinScreen() {
+    document.getElementById('gameContext').innerHTML = ``; 
+    document.getElementById('gameContext').innerHTML = `
+    <img class="winscreen" src="assets/img/botones/Tittles/You win/Mesa de trabajo 1.png">
+    <img class="tryAgainIconwin" onclick="window.location.reload();" src="./assets/img/botones/Try again/Recurso 16.png">
+    `; 
+  }
 }
