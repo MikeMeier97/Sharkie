@@ -8,9 +8,15 @@ class PufferFish extends MovableObject {
     "./assets/img/enemy/1.Puffer fish/1.Swim/1.swim4.png",
     "./assets/img/enemy/1.Puffer fish/1.Swim/1.swim5.png",
   ];
+  IMAGES_PUFFERFISH_DEAD = [
+    './assets/img/enemy/1.Puffer fish/4.DIE/1.Dead 1.png',
+    './assets/img/enemy/1.Puffer fish/4.DIE/1.Dead 2.png',
+    './assets/img/enemy/1.Puffer fish/4.DIE/1.Dead 3.png'  
+  ];
   constructor() {
     super().loadImage("./assets/img/enemy/1.Puffer fish/1.Swim/1.swim1.png");
     this.loadImages(this.IMAGES_PUFFERFISH);
+    this.loadImages(this.IMAGES_PUFFERFISH_DEAD);
     this.x = 200 + Math.random() * 3600;
     this.y = 50 + Math.random() * 250;
     this.speed = 0.4 + Math.random() * 1;
@@ -38,11 +44,16 @@ class JellyFish extends MovableObject {
     "./assets/img/enemy/2 Jelly fish/Súper dangerous/Pink 3.png",
     "./assets/img/enemy/2 Jelly fish/Súper dangerous/Pink 4.png",
   ];
+  IMAGES_JELLYFISH_DEAD = [
+    './assets/img/enemy/2 Jelly fish/Dead/Lila/L1.png',
+    './assets/img/enemy/2 Jelly fish/Dead/Lila/L2.png',
+    './assets/img/enemy/2 Jelly fish/Dead/Lila/L3.png',
+    './assets/img/enemy/2 Jelly fish/Dead/Lila/L4.png',
+];
   constructor() {
-    super().loadImage(
-      "./assets/img/enemy/2 Jelly fish/Súper dangerous/Pink 1.png"
-    );
+    super().loadImage("./assets/img/enemy/2 Jelly fish/Súper dangerous/Pink 1.png");
     this.loadImages(this.IMAGES_JELLYFISH);
+    this.loadImages(this.IMAGES_JELLYFISH_DEAD);
     this.x = 200 + Math.random() * 3600;
     this.y = 50 + Math.random() * 250;
     this.speed = 0.4 + Math.random() * 1;

@@ -2,7 +2,7 @@ class Character extends MovableObject {
   height = 250;
   width = 250;
   y = 100;
-  speed = 8;
+  speed = 9;
   offset = {
     top: 160,
     left: 0,
@@ -57,11 +57,13 @@ class Character extends MovableObject {
     "./assets/img/sharkie/5.Hurt/1.Poisoned/4.png",
     "./assets/img/sharkie/5.Hurt/1.Poisoned/5.png",
   ];
+
   world;
   walking_sound = new Audio("./audio/jump.wav");
   hurt_sound = new Audio('./audio/small-hit.wav');
   dead_sound = new Audio('./audio/dead-sound.mp3');
   bubble_sound = new Audio('./audio/bubble-pop.wav');
+
   constructor() {
     super().loadImage("./assets/img/sharkie/1.IDLE/1.png");
     this.loadImages(this.IMAGES_SWIM);
@@ -87,7 +89,7 @@ class Character extends MovableObject {
         this.world.keyboard.DOWN ||
         this.world.keyboard.UP) {
         this.playAnimation(this.IMAGES_SWIM);
-      } else if(this.world.keyboard.D) {
+      } else if(this.world.keyboard.D && world.character.x > 3000)  {
         this.bubble_sound.play();
       } else {
         this.playAnimation(this.IMAGES_IDLE);
@@ -100,17 +102,11 @@ class Character extends MovableObject {
           this.dead_sound.play();
         }
         setTimeout(() => {
-          this.stopDeadAudio();
           this.loadGameOverScreen();
           this.clearAllInterval();
         }, 2000);
     
   }
-  stopDeadAudio() {
-    Audio.loop = false; 
-    this.dead_sound.pause();
-  }
- 
   moveAnimate() {
     this.walking_sound.pause();
     if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x && !this.isDead()) {

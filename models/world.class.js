@@ -17,17 +17,35 @@ class World {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keyboard = keyboard;
-    this.background_music.play();
     this.draw();
     this.setWorld();
     this.run();
+    this.background_music.play();
   }
   stopBackgroundMusic() {
     this.background_music.pause();
   }
+  isColliding(mo) {
+    return (
+      this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
+      this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
+      this.x + this.offset.left < mo.x - mo.offset.right &&
+      this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom
+    );
+  }
+  
+  checkCollisionBubbleEnemy() {
+    this.level.enemies.forEach((enemy) => {
+      this.enemy_index++;
+      console.log(this.enemy_index);
+      if(this.isColliding(enemy)) {
+        return this.enemy_index;
+      }
+    })
+  }
   checkCollisionsEnemy() {
     this.level.enemies.forEach((enemy) => {
-      if (this.character.isColliding(enemy)) {
+      if (this.isColliding(enemy)) {
         this.character.hit();
         this.statusBar.setPercentage(this.character.energy);
       }
@@ -35,7 +53,7 @@ class World {
   }
   checkCollisionsCoin() {
     this.level.coins.forEach((coin) => {
-      if (this.character.isColliding(coin)) {
+      if (this.world.character.isColliding(coin)) {
         if (this.character.coinLvl < 100) {
           this.character.coinLvl += 20;
           this.coin_sound.play(); 
@@ -66,7 +84,7 @@ class World {
     }, 200);
   }
   checkThrowobjects() {
-    if (this.keyboard.D && this.character.bottleLvl > 0) {
+    if (this.keyboard.D && this.character.bottleLvl > 0 && this.character.x > 3000) {
       let bottle = new ThrowableObject(this.character.x, this.character.y);
       this.throwableObjects.push(bottle);
       this.character.bottleLvl -= 20;
