@@ -57,8 +57,6 @@ class Character extends MovableObject {
     "./assets/img/sharkie/5.Hurt/1.Poisoned/4.png",
     "./assets/img/sharkie/5.Hurt/1.Poisoned/5.png",
   ];
-
-  world;
   walking_sound = new Audio("./audio/jump.wav");
   hurt_sound = new Audio('./audio/small-hit.wav');
   dead_sound = new Audio('./audio/dead-sound.mp3');

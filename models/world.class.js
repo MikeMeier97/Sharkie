@@ -10,8 +10,8 @@ class World {
   coinBar = new Coinbar();
   throwableObjects = [];
   background_music = new Audio("./audio/game-music.mp3");
-  coin_sound = new Audio('./audio/coin-collected.mp3');
-  bottle_sound = new Audio('./audio/poison-collected.wav');
+  coin_sound = new Audio("./audio/coin-collected.mp3");
+  bottle_sound = new Audio("./audio/poison-collected.wav");
 
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
@@ -21,31 +21,36 @@ class World {
     this.setWorld();
     this.run();
     this.background_music.play();
+    this.checkCollisionBubbleEnemy();
   }
   stopBackgroundMusic() {
     this.background_music.pause();
   }
-  isColliding(mo) {
+  isColliding(mo, object) {
     return (
-      this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
-      this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
-      this.x + this.offset.left < mo.x - mo.offset.right &&
-      this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom
+      object.x + object.width - object.offset.right > mo.x + mo.offset.left &&
+      object.y + object.height - object.offset.bottom > mo.y + mo.offset.top &&
+      object.x + object.offset.left < mo.x - mo.offset.right &&
+      object.y + object.offset.top < mo.y + mo.height - mo.offset.bottom
     );
   }
-  
+
   checkCollisionBubbleEnemy() {
-    this.level.enemies.forEach((enemy) => {
-      this.enemy_index++;
-      console.log(this.enemy_index);
-      if(this.isColliding(enemy)) {
-        return this.enemy_index;
+    setInterval(() => {
+      if (this.throwableObjects > 1) {
+        console.log("wir kommen rein");
+        this.level.enemies.forEach((enemy) => {
+          if (this.isColliding(enemy, this.throwableObjects)) {
+            console.log(enemy);
+            console.log("HIT");
+          }
+        });
       }
-    })
+    }, 500);
   }
   checkCollisionsEnemy() {
     this.level.enemies.forEach((enemy) => {
-      if (this.isColliding(enemy)) {
+      if (this.isColliding(enemy, this.character)) {
         this.character.hit();
         this.statusBar.setPercentage(this.character.energy);
       }
@@ -53,10 +58,10 @@ class World {
   }
   checkCollisionsCoin() {
     this.level.coins.forEach((coin) => {
-      if (this.world.character.isColliding(coin)) {
+      if (this.isColliding(coin, this.character)) {
         if (this.character.coinLvl < 100) {
           this.character.coinLvl += 20;
-          this.coin_sound.play(); 
+          this.coin_sound.play();
           this.coinBar.setPercentage(this.character.coinLvl);
           this.level.coins.splice(0, 1);
         }
@@ -65,7 +70,7 @@ class World {
   }
   checkCollisionsBottle() {
     this.level.bottle.forEach((bottle) => {
-      if (this.character.isColliding(bottle)) {
+      if (this.isColliding(bottle, this.character)) {
         if (this.character.bottleLvl < 100) {
           this.character.bottleLvl += 20;
           this.bottle_sound.play();
@@ -84,7 +89,11 @@ class World {
     }, 200);
   }
   checkThrowobjects() {
-    if (this.keyboard.D && this.character.bottleLvl > 0 && this.character.x > 3000) {
+    if (
+      this.keyboard.D &&
+      this.character.bottleLvl > 0 &&
+      this.character.x > 3000
+    ) {
       let bottle = new ThrowableObject(this.character.x, this.character.y);
       this.throwableObjects.push(bottle);
       this.character.bottleLvl -= 20;
@@ -134,6 +143,9 @@ class World {
   }
   setWorld() {
     this.character.world = this;
+    for (let i = 0; i < this.level.enemies.length; i++) {
+      this.level.enemies[i].world = this;
+    }
   }
   flipImage(mo) {
     this.ctx.save();
@@ -145,5 +157,4 @@ class World {
     mo.x = mo.x * -1;
     this.ctx.restore();
   }
-  
 }

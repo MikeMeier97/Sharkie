@@ -2,6 +2,12 @@ class Endboss extends MovableObject {
   height = 300;
   width = 300;
   energy = 100;
+  offset = {
+    top: 100,
+    left: 100,
+    right: 100,
+    bottom: 100,
+  };
   x = 3850;
   y = 50;
   IMAGES_BOSS_INTRO = [
@@ -45,14 +51,16 @@ class Endboss extends MovableObject {
     this.loadImages(this.IMAGES_BOSS_SWIM);
     this.loadImages(this.IMAGES_BOSS_INTRO);
     this.loadImages(this.IMAGES_BOSS_RIP);
-    this.animate();
+    setTimeout(() => {
+      this.animate();
+    }, 4000);
   }
   animate() {
     let i = 0;
     setTimeout(() => {
     setInterval(() => {
-      if(world.character.x > 3300) {
-          world.background_music.pause();
+      if(this.world.character.x > 3300) {
+          this.world.background_music.pause();
         if (i < 10) {
           this.boss_audio_spawn.play();
           this.playAnimation(this.IMAGES_BOSS_INTRO);
