@@ -77,6 +77,7 @@ class Character extends MovableObject {
     }, 1000 / 60);
     setInterval(() => {
       this.hurt_sound.pause();
+      this.bubble_sound.pause();
       if (this.isDead()) {
         this.gameOver();
       } else if (this.isHurt()) {
@@ -87,7 +88,7 @@ class Character extends MovableObject {
         this.world.keyboard.DOWN ||
         this.world.keyboard.UP) {
         this.playAnimation(this.IMAGES_SWIM);
-      } else if(this.world.keyboard.D)  {
+      } else if(this.world.keyboard.D && this.bottleLvl > 0)  {
         this.bubble_sound.play();
       } else {
         this.playAnimation(this.IMAGES_IDLE);

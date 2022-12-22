@@ -35,19 +35,16 @@ class World {
   }
 
   checkCollisionBubbleEnemy() {
-      if (this.throwableObjects.length > 0) {
-        console.log("wir kommen rein");
-        this.level.enemies.forEach((enemy) => {
-          this.throwableObjects.forEach((bottle) => {
-            if(this.isColliding(enemy, bottle)){
-              let index = enemy.id; 
-              console.log(index);
-              this.level.enemies.splice(index, 1);
-              this.throwableObjects.splice(0, 1);
-            }
-          });
+    if (this.throwableObjects.length > 0) {
+      this.level.enemies.forEach((enemy, enemyIndex) => {
+        this.throwableObjects.forEach((bottle, bottleIndex) => {
+          if(this.isColliding(enemy, bottle)){
+            this.level.enemies.splice(enemyIndex, 1);
+            this.throwableObjects.splice(bottleIndex, 1);
+          }
         });
-      }
+      });
+    }
   }
   checkCollisionsEnemy() {
     this.level.enemies.forEach((enemy) => {
@@ -58,28 +55,25 @@ class World {
     });
   }
   checkCollisionsCoin() {
-    this.level.coins.forEach((coin) => {
+    this.level.coins.forEach((coin, coinIndex) => {
       if (this.isColliding(coin, this.character)) {
         if (this.character.coinLvl < 100) {
           this.character.coinLvl += 20;
           this.coin_sound.play();
           this.coinBar.setPercentage(this.character.coinLvl);
-          this.level.coins.splice(0, 1);
+          this.level.coins.splice(coinIndex, 1);
         }
       }
     });
   }
   checkCollisionsBottle() {
-    this.level.bottle.forEach((bottle) => {
+    this.level.bottle.forEach((bottle, bottleIndex) => {
       if (this.isColliding(bottle, this.character)) {
         if (this.character.bottleLvl < 100) {
           this.character.bottleLvl += 20;
           this.bottle_sound.play();
           this.bottleBar.setPercentage(this.character.bottleLvl);
-          this.level.bottle.splice(0, 1);
-          setTimeout(() => {
-            this.level.bottle.splice(0, 1);
-          }, 1000);
+          this.level.bottle.splice(bottleIndex, 1);
         }
       }
     });
@@ -91,7 +85,7 @@ class World {
       this.checkCollisionsBottle();
       this.checkThrowobjects();
       this.checkCollisionBubbleEnemy();
-    }, 200);
+    }, 50);
   }
   checkThrowobjects() {
     if (
@@ -101,6 +95,9 @@ class World {
       let bottle = new ThrowableObject(this.character.x, this.character.y);
       this.throwableObjects.push(bottle);
       this.character.bottleLvl -= 20;
+      setTimeout(() => {
+        this.throwableObjects.splice(0, 1);
+      }, 500);
       this.bottleBar.setPercentage(this.character.bottleLvl);
     }
   }
