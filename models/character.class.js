@@ -87,7 +87,7 @@ class Character extends MovableObject {
         this.world.keyboard.DOWN ||
         this.world.keyboard.UP) {
         this.playAnimation(this.IMAGES_SWIM);
-      } else if(this.world.keyboard.D && world.character.x > 3000)  {
+      } else if(this.world.keyboard.D)  {
         this.bubble_sound.play();
       } else {
         this.playAnimation(this.IMAGES_IDLE);

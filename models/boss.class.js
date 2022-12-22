@@ -3,13 +3,11 @@ class Endboss extends MovableObject {
   width = 300;
   energy = 100;
   offset = {
-    top: 100,
-    left: 100,
-    right: 100,
-    bottom: 100,
+    top: -100,
+    left: 10,
+    right: 10,
+    bottom: -100,
   };
-  x = 3850;
-  y = 50;
   IMAGES_BOSS_INTRO = [
     "./assets/img/enemy/3 Final Enemy/1.Introduce/1.png",
     "./assets/img/enemy/3 Final Enemy/1.Introduce/2.png",
@@ -46,11 +44,14 @@ class Endboss extends MovableObject {
   ];
   boss_audio_spawn = new Audio('./audio/boss-splash.mp3');
   boss_background_music = new Audio('./audio/boss-music.mp3');
-  constructor() {
+  constructor(x, y, id) {
     super().loadImage(this.IMAGES_BOSS_INTRO[0]);
     this.loadImages(this.IMAGES_BOSS_SWIM);
     this.loadImages(this.IMAGES_BOSS_INTRO);
     this.loadImages(this.IMAGES_BOSS_RIP);
+    this.x = x; 
+    this.y = y;
+    this.id = id;  
     setTimeout(() => {
       this.animate();
     }, 4000);

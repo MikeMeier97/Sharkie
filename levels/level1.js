@@ -15,7 +15,7 @@ let level1 = new Level(
     new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 12),
     new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 13),
     new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 14),
-    new Endboss(),
+    new Endboss(3900, 50, "boss"),
   ],
   [
     new BackgroundObject("./assets/img/background/Layers/5. Water/D1.png", 0),

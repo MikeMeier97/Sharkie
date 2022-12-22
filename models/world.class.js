@@ -21,7 +21,6 @@ class World {
     this.setWorld();
     this.run();
     this.background_music.play();
-    this.checkCollisionBubbleEnemy();
   }
   stopBackgroundMusic() {
     this.background_music.pause();
@@ -36,17 +35,19 @@ class World {
   }
 
   checkCollisionBubbleEnemy() {
-    setInterval(() => {
-      if (this.throwableObjects > 1) {
+      if (this.throwableObjects.length > 0) {
         console.log("wir kommen rein");
         this.level.enemies.forEach((enemy) => {
-          if (this.isColliding(enemy, this.throwableObjects)) {
-            console.log(enemy);
-            console.log("HIT");
-          }
+          this.throwableObjects.forEach((bottle) => {
+            if(this.isColliding(enemy, bottle)){
+              this.level.enemies.splice(enemy.id, 1);
+              this.throwableObjects.splice(0, 1);
+              console.log(enemy);
+              console.log('hit');
+            }
+          });
         });
       }
-    }, 500);
   }
   checkCollisionsEnemy() {
     this.level.enemies.forEach((enemy) => {
@@ -86,16 +87,17 @@ class World {
       this.checkCollisionsCoin();
       this.checkCollisionsBottle();
       this.checkThrowobjects();
+      this.checkCollisionBubbleEnemy();
     }, 200);
   }
   checkThrowobjects() {
     if (
       this.keyboard.D &&
-      this.character.bottleLvl > 0 &&
-      this.character.x > 3000
+      this.character.bottleLvl > 0
     ) {
       let bottle = new ThrowableObject(this.character.x, this.character.y);
       this.throwableObjects.push(bottle);
+      console.log(this.throwableObjects);
       this.character.bottleLvl -= 20;
       this.bottleBar.setPercentage(this.character.bottleLvl);
     }
