@@ -40,10 +40,10 @@ class World {
         this.level.enemies.forEach((enemy) => {
           this.throwableObjects.forEach((bottle) => {
             if(this.isColliding(enemy, bottle)){
-              this.level.enemies.splice(enemy.id, 1);
+              let index = enemy.id; 
+              console.log(index);
+              this.level.enemies.splice(index, 1);
               this.throwableObjects.splice(0, 1);
-              console.log(enemy);
-              console.log('hit');
             }
           });
         });
@@ -77,6 +77,9 @@ class World {
           this.bottle_sound.play();
           this.bottleBar.setPercentage(this.character.bottleLvl);
           this.level.bottle.splice(0, 1);
+          setTimeout(() => {
+            this.level.bottle.splice(0, 1);
+          }, 1000);
         }
       }
     });
@@ -97,7 +100,6 @@ class World {
     ) {
       let bottle = new ThrowableObject(this.character.x, this.character.y);
       this.throwableObjects.push(bottle);
-      console.log(this.throwableObjects);
       this.character.bottleLvl -= 20;
       this.bottleBar.setPercentage(this.character.bottleLvl);
     }

@@ -56,6 +56,12 @@ let level1 = new Level(
   ],
   [
     new Bottle(300, 350), 
-    new Bottle(380, 340)
+    new Bottle(380, 340),
+    new Bottle(500, 350), 
+    new Bottle(780, 330),
+    new Bottle(1600, 320), 
+    new Bottle(880, 320),
+    new Bottle(2800, 370), 
+    new Bottle(3500, 320),
   ]
 );

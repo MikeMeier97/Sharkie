@@ -2,10 +2,10 @@ class ThrowableObject extends MovableObject {
   height = 50;
   width = 50;
   offset = {
-    top: -50,
+    top: 0,
     left: 0,
     right: 0,
-    bottom: -50,
+    bottom: 0,
   };
 
   constructor(x, y) {
