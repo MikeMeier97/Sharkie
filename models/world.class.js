@@ -47,13 +47,13 @@ class World {
     }
   }
   hitEnemy(enemy) {
-    if (enemy.id == "boss") {
+    console.log(enemy);
+    if (enemy == 15) {
+      console.log("Boss!!!")
+      this.level.enemies[enemy].energy -= 25; 
+      this.level.enemies[enemy].hit();
     } else {
       this.level.enemies[enemy].energy -= 10;
-      if(this.level.enemies[enemy].energy == 0) {}
-      setTimeout(() => {
-        this.level.enemies.splice(enemy, 1); 
-      }, 2000);
     }
   }
 

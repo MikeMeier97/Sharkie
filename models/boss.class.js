@@ -2,6 +2,8 @@ class Endboss extends MovableObject {
   height = 300;
   width = 300;
   energy = 100; 
+  isDead = false; 
+  id = "boss";
   IMAGES_BOSS_INTRO = [
     "./assets/img/enemy/3 Final Enemy/1.Introduce/1.png",
     "./assets/img/enemy/3 Final Enemy/1.Introduce/2.png",
@@ -36,6 +38,12 @@ class Endboss extends MovableObject {
     './assets/img/enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png',
     './assets/img/enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png'
   ];
+  IMAGES_BOSS_HURT = [
+    './assets/img/enemy/3 Final Enemy/Hurt/1.png',
+    './assets/img/enemy/3 Final Enemy/Hurt/2.png',
+    './assets/img/enemy/3 Final Enemy/Hurt/3.png',
+    './assets/img/enemy/3 Final Enemy/Hurt/4.png',
+  ];
   boss_audio_spawn = new Audio('./audio/boss-splash.mp3');
   boss_background_music = new Audio('./audio/boss-music.mp3');
   constructor(x, y, id) {
@@ -43,6 +51,7 @@ class Endboss extends MovableObject {
     this.loadImages(this.IMAGES_BOSS_SWIM);
     this.loadImages(this.IMAGES_BOSS_INTRO);
     this.loadImages(this.IMAGES_BOSS_RIP);
+    this.loadImages(this.IMAGES_BOSS_HURT);
     this.x = x; 
     this.y = y;
     this.id = id;  
@@ -61,6 +70,8 @@ class Endboss extends MovableObject {
           this.playAnimation(this.IMAGES_BOSS_INTRO);
         } else if (this.energy <= 0) {
           this.winGame();
+        } else if(this.isHurt()){
+          this.playAnimation(this.IMAGES_BOSS_HURT);
         } else {
           this.boss_audio_spawn.pause();
           this.boss_background_music.play();
@@ -81,10 +92,13 @@ class Endboss extends MovableObject {
     }, 1000);
   }
   winGame() {
-    this.playAnimation(this.IMAGES_BOSS_RIP);
+    if(!this.isDead){
+    this.playAnimationOnce(this.IMAGES_BOSS_RIP);
       setTimeout(() => {
         this.clearAllInterval();
         this.loadWinScreen();
-      }, 500);
+      }, 2500);
+      this.isDead = true; 
     }
+  }
 }
