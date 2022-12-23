@@ -1,9 +1,11 @@
 class Endboss extends MovableObject {
   height = 300;
   width = 300;
-  energy = 100; 
-  isDead = false; 
-  id = "boss";
+  energy = 100;
+  boss_spawned = false;
+  indexTimeOut = 0; 
+  timeOut = true; 
+  isDead = false;
   IMAGES_BOSS_INTRO = [
     "./assets/img/enemy/3 Final Enemy/1.Introduce/1.png",
     "./assets/img/enemy/3 Final Enemy/1.Introduce/2.png",
@@ -15,6 +17,14 @@ class Endboss extends MovableObject {
     "./assets/img/enemy/3 Final Enemy/1.Introduce/8.png",
     "./assets/img/enemy/3 Final Enemy/1.Introduce/9.png",
     "./assets/img/enemy/3 Final Enemy/1.Introduce/10.png",
+  ];
+  IMAGES_BOSS_BITE = [
+    "./assets/img/enemy/3 Final Enemy/Attack/1.png",
+    "./assets/img/enemy/3 Final Enemy/Attack/2.png",
+    "./assets/img/enemy/3 Final Enemy/Attack/3.png",
+    "./assets/img/enemy/3 Final Enemy/Attack/4.png",
+    "./assets/img/enemy/3 Final Enemy/Attack/5.png",
+    "./assets/img/enemy/3 Final Enemy/Attack/6.png",
   ];
   IMAGES_BOSS_SWIM = [
     "./assets/img/enemy/3 Final Enemy/2.floating/1.png",
@@ -30,31 +40,37 @@ class Endboss extends MovableObject {
     "./assets/img/enemy/3 Final Enemy/2.floating/11.png",
     "./assets/img/enemy/3 Final Enemy/2.floating/12.png",
     "./assets/img/enemy/3 Final Enemy/2.floating/13.png",
+
   ];
   IMAGES_BOSS_RIP = [
-    './assets/img/enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 6.png',
-    './assets/img/enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 7.png',
-    './assets/img/enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 8.png',
-    './assets/img/enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png',
-    './assets/img/enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png'
+    "./assets/img/enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 6.png",
+    "./assets/img/enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 7.png",
+    "./assets/img/enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 8.png",
+    "./assets/img/enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png",
+    "./assets/img/enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png",
   ];
   IMAGES_BOSS_HURT = [
-    './assets/img/enemy/3 Final Enemy/Hurt/1.png',
-    './assets/img/enemy/3 Final Enemy/Hurt/2.png',
-    './assets/img/enemy/3 Final Enemy/Hurt/3.png',
-    './assets/img/enemy/3 Final Enemy/Hurt/4.png',
+    "./assets/img/enemy/3 Final Enemy/Hurt/1.png",
+    "./assets/img/enemy/3 Final Enemy/Hurt/2.png",
+    "./assets/img/enemy/3 Final Enemy/Hurt/3.png",
+    "./assets/img/enemy/3 Final Enemy/Hurt/4.png",
   ];
-  boss_audio_spawn = new Audio('./audio/boss-splash.mp3');
-  boss_background_music = new Audio('./audio/boss-music.mp3');
+  boss_audio_spawn = new Audio("./audio/boss-splash.mp3");
+  boss_background_music = new Audio("./audio/boss-music.mp3");
+  boss_bite_sound = new Audio("./audio/boss-bite.mp3");
+  win_sound = new Audio("./audio/win.mp3");
+
   constructor(x, y, id) {
     super().loadImage(this.IMAGES_BOSS_INTRO[0]);
     this.loadImages(this.IMAGES_BOSS_SWIM);
     this.loadImages(this.IMAGES_BOSS_INTRO);
     this.loadImages(this.IMAGES_BOSS_RIP);
     this.loadImages(this.IMAGES_BOSS_HURT);
-    this.x = x; 
+    this.loadImages(this.IMAGES_BOSS_BITE);
+    this.resetTimeOut(); 
+    this.x = x;
     this.y = y;
-    this.id = id;  
+    this.id = id;
     setTimeout(() => {
       this.animate();
     }, 4000);
@@ -62,25 +78,42 @@ class Endboss extends MovableObject {
   animate() {
     let i = 0;
     setTimeout(() => {
-    setInterval(() => {
-      if(this.world.character.x > 3300) {
-          this.world.background_music.pause();
-        if (i < 10) {
-          this.boss_audio_spawn.play();
-          this.playAnimation(this.IMAGES_BOSS_INTRO);
-        } else if (this.energy <= 0) {
-          this.winGame();
-        } else if(this.isHurt()){
-          this.playAnimation(this.IMAGES_BOSS_HURT);
-        } else {
-          this.boss_audio_spawn.pause();
-          this.boss_background_music.play();
-          this.playAnimation(this.IMAGES_BOSS_SWIM);
+      setInterval(() => {
+        if (this.world.character.x > 3200) {
+          this.boss_spawned = true;
         }
-        i++;
-      }
-    }, 150);
-  }, 1000);
+        if (this.boss_spawned) {
+          this.world.background_music.pause();
+          if (i < 10) {
+            this.boss_audio_spawn.play();
+            this.playAnimation(this.IMAGES_BOSS_INTRO);
+          } else if (this.energy <= 0) {
+            this.winGame();
+          } else if (this.isHurt()) {
+            this.playAnimation(this.IMAGES_BOSS_HURT);
+          } else if(!this.timeOut){
+            this.playAnimation(this.IMAGES_BOSS_BITE);
+            this.boss_bite_sound.play();
+            this.indexTimeOut++; 
+            if(this.indexTimeOut == 6) {
+              this.timeOut = true;
+            }
+          } else if(this.indexTimeOut >= 6){
+            this.boss_audio_spawn.pause();
+            this.boss_background_music.play();
+            this.x -= 10;
+            this.playAnimation(this.IMAGES_BOSS_SWIM);
+          }
+          i++;
+        }
+      }, 150);
+    }, 1000);
+  }
+  resetTimeOut() {
+    setInterval(() => {
+      this.timeOut = false;
+      this.indexTimeOut = 0;  
+    }, 5000);
   }
   bossAudio() {
     setTimeout(() => {
@@ -92,13 +125,15 @@ class Endboss extends MovableObject {
     }, 1000);
   }
   winGame() {
-    if(!this.isDead){
-    this.playAnimationOnce(this.IMAGES_BOSS_RIP);
+    if (!this.isDead) {
+      this.playAnimationOnce(this.IMAGES_BOSS_RIP);
       setTimeout(() => {
+        this.boss_background_music.pause();
         this.clearAllInterval();
         this.loadWinScreen();
+        this.win_sound.play();
       }, 2500);
-      this.isDead = true; 
+      this.isDead = true;
     }
   }
 }

@@ -49,7 +49,6 @@ class World {
   hitEnemy(enemy) {
     console.log(enemy);
     if (enemy == 15) {
-      console.log("Boss!!!")
       this.level.enemies[enemy].energy -= 25; 
       this.level.enemies[enemy].hit();
     } else {
@@ -84,7 +83,9 @@ class World {
           this.character.bottleLvl += 20;
           this.bottle_sound.play();
           this.bottleBar.setPercentage(this.character.bottleLvl);
-          this.level.bottle.splice(bottleIndex, 1);
+          setTimeout(() => {
+            this.level.bottle.splice(bottleIndex, 1);
+          }, 200);
         }
       }
     });

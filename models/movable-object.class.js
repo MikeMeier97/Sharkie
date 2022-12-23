@@ -11,7 +11,6 @@ class MovableObject extends DrawableObject {
   deadTime = 0;
   otherDirection = false;
   world;
-  id;
   offset = {
     top: 0,
     left: 0,
