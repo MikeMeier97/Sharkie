@@ -1,13 +1,7 @@
 class Endboss extends MovableObject {
   height = 300;
   width = 300;
-  energy = 100;
-  offset = {
-    top: -100,
-    left: 10,
-    right: 10,
-    bottom: -100,
-  };
+  energy = 100; 
   IMAGES_BOSS_INTRO = [
     "./assets/img/enemy/3 Final Enemy/1.Introduce/1.png",
     "./assets/img/enemy/3 Final Enemy/1.Introduce/2.png",

@@ -38,13 +38,26 @@ class World {
     if (this.throwableObjects.length > 0) {
       this.level.enemies.forEach((enemy, enemyIndex) => {
         this.throwableObjects.forEach((bottle, bottleIndex) => {
-          if(this.isColliding(enemy, bottle)){
-            this.level.enemies.splice(enemyIndex, 1);
+          if (this.isColliding(enemy, bottle)) {
+            this.hitEnemy(enemyIndex);
             this.throwableObjects.splice(bottleIndex, 1);
           }
         });
       });
     }
+  }
+  hitEnemy(enemy) {
+    if (enemy.id == "boss") {
+    } else {
+      this.level.enemies[enemy].energy -= 10;
+      if(this.level.enemies[enemy].energy == 0) {}
+      setTimeout(() => {
+        this.level.enemies.splice(enemy, 1); 
+      }, 2000);
+    }
+  }
+  isDead() {
+    return this.energy == 0;
   }
   checkCollisionsEnemy() {
     this.level.enemies.forEach((enemy) => {
@@ -88,10 +101,7 @@ class World {
     }, 50);
   }
   checkThrowobjects() {
-    if (
-      this.keyboard.D &&
-      this.character.bottleLvl > 0
-    ) {
+    if (this.keyboard.D && this.character.bottleLvl > 0 && this.throwableObjects == 0) {
       let bottle = new ThrowableObject(this.character.x, this.character.y);
       this.throwableObjects.push(bottle);
       this.character.bottleLvl -= 20;

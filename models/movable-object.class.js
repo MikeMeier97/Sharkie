@@ -1,3 +1,6 @@
+const sleep = (time) => {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 class MovableObject extends DrawableObject {
   speed = 0.15;
   energy = 100;
@@ -8,12 +11,14 @@ class MovableObject extends DrawableObject {
   deadTime = 0;
   otherDirection = false;
   world;
+  id;
   offset = {
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
   };
+
 
   moveLeft() {
     this.x -= this.speed;
@@ -33,6 +38,14 @@ class MovableObject extends DrawableObject {
     this.img = this.imageCache[path];
     this.currentImage++;
   }
+  async playAnimationOnce(images) {
+    for (let i = 0; i < images.length; i++) {
+      let path = images[i];
+      this.img = this.imageCache[path];
+      this.currentImage++;
+      await sleep(200);
+    }
+  }
   hit() {
     this.energy -= 5;
     if (this.energy < 0) {
@@ -41,9 +54,7 @@ class MovableObject extends DrawableObject {
       this.lastHit = new Date().getTime();
     }
   }
-  isDead() {
-    return this.energy == 0;
-  }
+
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
@@ -51,5 +62,9 @@ class MovableObject extends DrawableObject {
   }
   clearAllInterval() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
+  }
+  botHit(img){
+    this.playAnimationOnce(img);
+    this.y -= 10;
   }
 }
