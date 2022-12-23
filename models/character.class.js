@@ -78,7 +78,7 @@ class Character extends MovableObject {
     setInterval(() => {
       this.hurt_sound.pause();
       this.bubble_sound.pause();
-      if (this.world.isDead()) {
+      if (this.isDead()) {
         this.gameOver();
       } else if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);
@@ -110,22 +110,22 @@ class Character extends MovableObject {
     if (
       this.world.keyboard.RIGHT &&
       this.x < this.world.level.level_end_x &&
-      !this.world.isDead()
+      !this.isDead()
     ) {
       this.moveRight();
       this.otherDirection = false;
       this.walking_sound.play();
     }
-    if (this.world.keyboard.LEFT && this.x > 0 && !this.world.isDead()) {
+    if (this.world.keyboard.LEFT && this.x > 0 && !this.isDead()) {
       this.moveLeft();
       this.otherDirection = true;
       this.walking_sound.play();
     }
-    if (this.world.keyboard.UP && this.y > -100 && !this.world.isDead()) {
+    if (this.world.keyboard.UP && this.y > -100 && !this.isDead()) {
       this.moveUp();
       this.walking_sound.play();
     }
-    if (this.world.keyboard.DOWN && this.y < 280 && !this.world.isDead()) {
+    if (this.world.keyboard.DOWN && this.y < 280 && !this.isDead()) {
       this.moveDown();
       this.walking_sound.play();
     }

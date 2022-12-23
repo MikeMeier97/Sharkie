@@ -38,6 +38,9 @@ class MovableObject extends DrawableObject {
     this.img = this.imageCache[path];
     this.currentImage++;
   }
+  isDead() {
+    return this.energy == 0;
+  }
   async playAnimationOnce(images) {
     for (let i = 0; i < images.length; i++) {
       let path = images[i];

@@ -56,9 +56,7 @@ class World {
       }, 2000);
     }
   }
-  isDead() {
-    return this.energy == 0;
-  }
+
   checkCollisionsEnemy() {
     this.level.enemies.forEach((enemy) => {
       if (this.isColliding(enemy, this.character)) {

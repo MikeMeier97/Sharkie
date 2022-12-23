@@ -2,6 +2,7 @@ class PufferFish extends MovableObject {
   width = 80;
   height = 80;
   energy = 10;
+  isDead = false; 
   IMAGES_PUFFERFISH = [
     "./assets/img/enemy/1.Puffer fish/1.Swim/1.swim1.png",
     "./assets/img/enemy/1.Puffer fish/1.Swim/1.swim2.png",
@@ -41,9 +42,12 @@ class PufferFish extends MovableObject {
     setInterval(() => {
       if (this.energy >= 10) {
         this.playAnimation(this.IMAGES_PUFFERFISH);
-      } else {
-        this.playAnimation(this.IMAGES_PUFFERFISH_DEAD);
-        this.y -= 30;
+      } else if(!this.isDead){
+        this.playAnimationOnce(this.IMAGES_PUFFERFISH_DEAD);
+        setInterval(() => {
+          this.y -= 10;
+        }, 50);
+        this.isDead = true;
       }
     }, 300);
   }
@@ -52,6 +56,7 @@ class JellyFish extends MovableObject {
   width = 80;
   height = 80;
   energy = 10;
+  isDead = false; 
   ceilingHeight = 400;
   fishHeight = 0;
   swimDirection = 1;
@@ -93,9 +98,12 @@ class JellyFish extends MovableObject {
     setInterval(() => {
       if (this.energy >= 10) {
         this.playAnimation(this.IMAGES_JELLYFISH);
-      } else {
-        this.playAnimation(this.IMAGES_JELLYFISH_DEAD);
-        this.y -= 30;
+      } else if(!this.isDead){
+        this.playAnimationOnce(this.IMAGES_JELLYFISH_DEAD);
+        setInterval(() => {
+          this.y -= 10;
+        }, 50);
+        this.isDead = true;
       }
     }, 100);
   }
