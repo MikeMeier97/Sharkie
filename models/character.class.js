@@ -2,13 +2,26 @@ class Character extends MovableObject {
   height = 250;
   width = 250;
   y = 100;
+  AFK = false; 
+  currentIdle = 0; 
   speed = 9;
+  timeOut = 0; 
   offset = {
     top: 160,
     left: 0,
     right: 80,
     bottom: 60,
   };
+  IMAGES_SHOOT = [
+    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/1.png",
+    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/2.png",
+    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/3.png",
+    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/4.png",
+    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/5.png",
+    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/6.png",
+    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/7.png",
+    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/8.png",
+  ];
   IMAGES_IDLE = [
     "./assets/img/sharkie/1.IDLE/1.png",
     "./assets/img/sharkie/1.IDLE/3.png",
@@ -28,6 +41,28 @@ class Character extends MovableObject {
     "./assets/img/sharkie/1.IDLE/16.png",
     "./assets/img/sharkie/1.IDLE/17.png",
     "./assets/img/sharkie/1.IDLE/18.png",
+  ];
+  IMAGES_LONG_IDLE = [
+    "./assets/img/sharkie/2.Long_IDLE/i1.png",
+    "./assets/img/sharkie/2.Long_IDLE/i2.png",
+    "./assets/img/sharkie/2.Long_IDLE/i3.png",
+    "./assets/img/sharkie/2.Long_IDLE/i4.png",
+    "./assets/img/sharkie/2.Long_IDLE/i5.png",
+    "./assets/img/sharkie/2.Long_IDLE/i6.png",
+    "./assets/img/sharkie/2.Long_IDLE/i7.png",
+    "./assets/img/sharkie/2.Long_IDLE/i8.png",
+    "./assets/img/sharkie/2.Long_IDLE/i9.png",
+    "./assets/img/sharkie/2.Long_IDLE/i10.png",
+    "./assets/img/sharkie/2.Long_IDLE/i11.png",
+    "./assets/img/sharkie/2.Long_IDLE/i12.png",
+    "./assets/img/sharkie/2.Long_IDLE/i13.png",
+    "./assets/img/sharkie/2.Long_IDLE/i14.png",
+  ];
+  IMAGES_IDLE_ZZZ = [
+    "./assets/img/sharkie/2.Long_IDLE/i11.png",
+    "./assets/img/sharkie/2.Long_IDLE/i12.png",
+    "./assets/img/sharkie/2.Long_IDLE/i13.png",
+    "./assets/img/sharkie/2.Long_IDLE/i14.png",
   ];
   IMAGES_SWIM = [
     "./assets/img/sharkie/3.Swim/1.png",
@@ -66,8 +101,10 @@ class Character extends MovableObject {
     super().loadImage("./assets/img/sharkie/1.IDLE/1.png");
     this.loadImages(this.IMAGES_SWIM);
     this.loadImages(this.IMAGES_IDLE);
+    this.loadImages(this.IMAGES_LONG_IDLE);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
+    this.loadImages(this.IMAGES_SHOOT);
     this.animate();
   }
 
@@ -90,10 +127,21 @@ class Character extends MovableObject {
         this.world.keyboard.UP
       ) {
         this.playAnimation(this.IMAGES_SWIM);
+        this.timeOut = 0; 
+        this.currentIdle = 0;
       } else if (this.world.keyboard.D && this.bottleLvl > 0) {
         this.bubble_sound.play();
       } else {
-        this.playAnimation(this.IMAGES_IDLE);
+        this.timeOut++;
+        if(this.timeOut >= 30) {
+          this.playAnimation(this.IMAGES_LONG_IDLE);
+          this.currentIdle++; 
+          if(this.currentIdle > 10) {
+            this.playAnimation(this.IMAGES_IDLE_ZZZ);
+          }
+        } else {
+          this.playAnimation(this.IMAGES_IDLE);
+        }
       }
     }, 200);
   }
