@@ -21,6 +21,7 @@ class World {
     this.draw();
     this.setWorld();
     this.run();
+    this.background_music.play();
   }
   stopBackgroundMusic() {
     if(!this.mute) {
@@ -91,9 +92,7 @@ class World {
           this.character.bottleLvl += 20;
           this.bottle_sound.play();
           this.bottleBar.setPercentage(this.character.bottleLvl);
-          setTimeout(() => {
             this.level.bottle.splice(bottleIndex, 1);
-          }, 200);
         }
       }
     });
