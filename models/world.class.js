@@ -48,7 +48,7 @@ class World {
   hitEnemy(enemy) {
     console.log(enemy);
     if (enemy == 15) {
-      this.level.enemies[enemy].energy -= 25; 
+      this.level.enemies[enemy].energy -= 25;
       this.level.enemies[enemy].hit();
     } else {
       this.level.enemies[enemy].energy -= 10;
@@ -99,7 +99,11 @@ class World {
     }, 50);
   }
   checkThrowobjects() {
-    if (this.keyboard.D && this.character.bottleLvl > 0 && this.throwableObjects == 0) {
+    if (
+      this.keyboard.D &&
+      this.character.bottleLvl > 0 &&
+      this.throwableObjects == 0
+    ) {
       let bottle = new ThrowableObject(this.character.x, this.character.y);
       this.throwableObjects.push(bottle);
       this.character.bottleLvl -= 20;
@@ -110,28 +114,33 @@ class World {
     }
   }
   draw() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    try {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.ctx.translate(this.camera_x, 0);
+      this.ctx.translate(this.camera_x, 0);
 
-    this.addObjectsToMap(this.level.backgroundObjects);
-    this.ctx.translate(-this.camera_x, 0);
-    this.addToMap(this.statusBar);
-    this.addToMap(this.bottleBar);
-    this.addToMap(this.coinBar);
-    this.ctx.translate(this.camera_x, 0);
-    this.addToMap(this.character);
+      this.addObjectsToMap(this.level.backgroundObjects);
+      this.ctx.translate(-this.camera_x, 0);
+      this.addToMap(this.statusBar);
+      this.addToMap(this.bottleBar);
+      this.addToMap(this.coinBar);
+      this.ctx.translate(this.camera_x, 0);
+      this.addToMap(this.character);
 
-    this.addObjectsToMap(this.level.enemies);
-    this.addObjectsToMap(this.level.coins);
-    this.addObjectsToMap(this.level.bottle);
-    this.addObjectsToMap(this.throwableObjects);
-    this.ctx.translate(-this.camera_x, 0);
+      this.addObjectsToMap(this.level.enemies);
+      this.addObjectsToMap(this.level.coins);
+      this.addObjectsToMap(this.level.bottle);
+      this.addObjectsToMap(this.throwableObjects);
+      this.ctx.translate(-this.camera_x, 0);
 
-    let self = this;
-    requestAnimationFrame(function () {
-      self.draw();
-    });
+      let self = this;
+      requestAnimationFrame(function () {
+        self.draw();
+      });
+    } catch (e) {
+      console.warn("Error loading image", e);
+      console.log("Could not load image", this.img);
+    }
   }
   addObjectsToMap(objects) {
     objects.forEach((o) => {
@@ -167,7 +176,7 @@ class World {
     this.ctx.restore();
   }
 
-  startGame(){
+  startGame() {
     console.log(this.level);
     this.level.push(initLevel());
     setTimeout(() => {
@@ -175,7 +184,7 @@ class World {
       this.setWorld();
       this.run();
       this.character.animate();
-      this.background_music.play(); 
+      this.background_music.play();
     }, 500);
   }
 }
