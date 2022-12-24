@@ -34,7 +34,7 @@ class DrawableObject {
     document.getElementById("gameContext").innerHTML = ``;
     document.getElementById("gameContext").innerHTML = `
     <div class="gameOver">
-        <img src="./assets/img/botones/Tittles/Game Over/Recurso 9.png">
+        <img class="gameOverTitle" src="./assets/img/botones/Tittles/Game Over/Recurso 9.png">
         <img class="tryAgainIcon" onclick="window.location.reload();" src="./assets/img/botones/Try again/Recurso 16.png">
     </div>`;
   }

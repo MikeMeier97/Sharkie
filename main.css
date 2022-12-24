@@ -6,12 +6,12 @@
   padding: 0;
 }
 .gameTitle {
-  margin-top: 8vh;
-  margin-bottom: 8vh;
+  margin-top: 4vh;
+  margin-bottom: 4vh;
 }
 #gameContext {
   width: 100vw;
-  height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,6 +35,7 @@ canvas {
   cursor: pointer;
 }
 .tryAgainIcon {
+  width: 350px;
   margin-top: 50px;
 }
 .tryAgainIconwin {
@@ -51,7 +52,7 @@ canvas {
   height: 300px;
 }
 .startTitle {
-  margin-top: 50px; 
+  margin-top: 10vh; 
   font-size: 80px;
 }
 .d-none{
@@ -60,18 +61,46 @@ canvas {
 .d-flex{
   display: flex !important; 
 }
+.topPanel img {
+  width: 30px;
+}
+.topPanel{
+  position: relative;
+  top: 45vh;
+  left: 23vw;
+}
 #startScreen{
+  height: 100vh;
   display: flex; 
   flex-direction: column;
   align-items: center;
 }
+#fullscreen{
+  position: fixed;
+}
+.footerPanel {
+  position: fixed;
+  top: 560px;
+}
+.gameOverTitle{
+  width: 80vw;
+}
 #game {
+  max-height: 100vh;
   display: flex; 
   flex-direction: column;
   align-items: center;
 }
 .startButton {
   width: 200px;
+}
+@media only screen and (max-height: 800px){
+  .gameTitle {
+    display: none;
+  }
+  canvas{
+    margin-bottom: 5vh;
+  }
 }
 /* Smartphones width */
 @media only screen and (max-width: 720px) {

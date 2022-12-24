@@ -3,6 +3,7 @@ class World {
   level = level1;
   canvas;
   ctx;
+  mute = false;
   keyboard;
   camera_x = 0;
   statusBar = new Statusbar();
@@ -22,7 +23,15 @@ class World {
     this.run();
   }
   stopBackgroundMusic() {
+    if(!this.mute) {
+    document.getElementById('sound').src = './assets/icons/mute.png';
     this.background_music.pause();
+    this.mute = true;
+  } else { 
+    document.getElementById('sound').src = './assets/icons/volume.png';
+    this.background_music.play();
+    this.mute = false;
+  }
   }
   isColliding(mo, object) {
     return (
