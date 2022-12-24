@@ -20,7 +20,6 @@ class World {
     this.draw();
     this.setWorld();
     this.run();
-    this.background_music.play();
   }
   stopBackgroundMusic() {
     this.background_music.pause();
@@ -166,5 +165,17 @@ class World {
   flipImageBack(mo) {
     mo.x = mo.x * -1;
     this.ctx.restore();
+  }
+
+  startGame(){
+    console.log(this.level);
+    this.level.push(initLevel());
+    setTimeout(() => {
+      this.draw();
+      this.setWorld();
+      this.run();
+      this.character.animate();
+      this.background_music.play(); 
+    }, 500);
   }
 }

@@ -26,10 +26,21 @@
     <script src="./js/game.js"></script>
     <title>Sharkie</title>
   </head>
-  <body onload="init()">
+  <body onload="">
     <div id="gameContext">
-      <h1 class="gameTitle">Sharkie</h1>
-      <canvas id="canvas" width="720" height="480"></canvas>
+      <div class="d-none" id="game">
+        <h1 class="gameTitle">Sharkie</h1>
+        <canvas id="canvas" width="720" height="480"></canvas>
+      </div>
+      <div id="startScreen">
+      <h1 class="startTitle">Sharkie</h1>
+      <img
+        class="sharkieIMGStart"
+        src="./assets/img/sharkie/1.IDLE/1.png"
+        alt="sharkieImg"
+      />
+      <img class="startButton" onclick="startGame()" src="./assets/img/botones/Start/1.png" alt="startButton">
+    </div>
     </div>
   </body>
 </html>
