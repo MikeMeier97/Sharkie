@@ -9,7 +9,26 @@ function startGame() {
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard);
 }
-
+function openFullScreen(elem) {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+function exitFullScreen() {
+  if(document.exitFullscreen){
+    document.exitFullscreen;
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen;
+  }
+}
+function fullScreen() {
+  let fullScreen = document.getElementById('fullscreen');
+  openFullScreen(fullScreen);
+}
 document.addEventListener("keydown", (e) => {
   if (e.keyCode == 39) {
     keyboard.RIGHT = true;

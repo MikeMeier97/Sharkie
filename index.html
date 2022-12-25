@@ -30,28 +30,43 @@
     <div id="gameContext">
       <div class="d-none" id="game">
         <div class="topPanel">
-          <img onclick="world.stopBackgroundMusic()" id="sound" src="./assets/icons/volume.png" alt="sound">
+          <img
+            onclick="world.stopBackgroundMusic()"
+            id="sound"
+            class="pointer"
+            src="./assets/icons/volume.png"
+            alt="sound"
+          />
         </div>
         <h1 class="gameTitle">Sharkie</h1>
-        <canvas id="canvas" width="720" height="480"></canvas>
-      <div class="footerPanel">
-        <div class="controllPanel">
-
+          <canvas id="canvas" width="720" height="480"></canvas>
+        <div class="footerPanel">
+          <div class="controllPanel"></div>
+          <div class="fullscreen">
+            <img
+              onclick="fullScreen()"
+              class="pointer"
+              src="./assets/icons/fullscreen.png"
+              id="fullscreen"
+              alt="fullscreen"
+            />
+          </div>
         </div>
-        <div class="fullscreen">
-          <img src="./assets/icons/fullscreen.png" id="fullscreen" alt="fullscreen">
-        </div>
-      </div>
       </div>
       <div id="startScreen">
-      <h1 class="startTitle">Sharkie</h1>
-      <img
-        class="sharkieIMGStart"
-        src="./assets/img/sharkie/1.IDLE/1.png"
-        alt="sharkieImg"
-      />
-      <img class="startButton" onclick="startGame()" src="./assets/img/botones/Start/1.png" alt="startButton">
-    </div>
+        <h1 class="startTitle">Sharkie</h1>
+        <img
+          class="sharkieIMGStart"
+          src="./assets/img/sharkie/1.IDLE/1.png"
+          alt="sharkieImg"
+        />
+        <img
+          class="startButton pointer"
+          onclick="startGame()"
+          src="./assets/img/botones/Start/1.png"
+          alt="startButton"
+        />
+      </div>
     </div>
   </body>
 </html>
