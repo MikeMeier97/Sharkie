@@ -27,7 +27,7 @@ function exitFullScreen() {
 }
 function fullScreen() {
   let fullScreen = document.getElementById('fullscreen');
-  openFullScreen(fullScreen);
+  openFullScreen(canvas);
 }
 document.addEventListener("keydown", (e) => {
   if (e.keyCode == 39) {

@@ -50,6 +50,7 @@ canvas {
   width: 100vw;
 }
 .sharkieIMGStart { 
+  margin-top: 5vh; 
   width: 300px;
   height: 300px;
 }
@@ -77,13 +78,14 @@ canvas {
   flex-direction: column;
   align-items: center;
 }
-#fullscreen{
-  position: fixed;
-}
+
 .footerPanel {
   position: relative;
   top: -80px;
   left: 310px;
+}
+#sound {
+  width: 50px;
 }
 .gameOverTitle{
   width: 80vw;
@@ -96,6 +98,7 @@ canvas {
 }
 
 .startButton {
+  margin-top: 10vh; 
   width: 200px;
 }
 .pointer:hover {

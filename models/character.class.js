@@ -130,6 +130,7 @@ class Character extends MovableObject {
         this.timeOut = 0; 
         this.currentIdle = 0;
       } else if (this.world.keyboard.D && this.bottleLvl > 0) {
+        this.timeOut = 0; 
         this.bubble_sound.play();
       } else {
         this.timeOut++;

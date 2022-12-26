@@ -100,9 +100,11 @@ class Endboss extends MovableObject {
             }
           } else if(this.indexTimeOut >= 6){
             this.boss_audio_spawn.pause();
-            this.boss_background_music.play();
             this.x -= 10;
             this.playAnimation(this.IMAGES_BOSS_SWIM);
+            if(!this.world.mute){
+              this.boss_background_music.play();
+            }
           }
           i++;
         }

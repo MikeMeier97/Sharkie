@@ -25,11 +25,11 @@ class World {
   }
   stopBackgroundMusic() {
     if(!this.mute) {
-    document.getElementById('sound').src = './assets/icons/mute.png';
+    document.getElementById('sound').src = './assets/icons/musicOff.png';
     this.background_music.pause();
     this.mute = true;
   } else { 
-    document.getElementById('sound').src = './assets/icons/volume.png';
+    document.getElementById('sound').src = './assets/icons/musicOn.png';
     this.background_music.play();
     this.mute = false;
   }
@@ -182,17 +182,5 @@ class World {
   flipImageBack(mo) {
     mo.x = mo.x * -1;
     this.ctx.restore();
-  }
-
-  startGame() {
-    console.log(this.level);
-    this.level.push(initLevel());
-    setTimeout(() => {
-      this.draw();
-      this.setWorld();
-      this.run();
-      this.character.animate();
-      this.background_music.play();
-    }, 500);
   }
 }
