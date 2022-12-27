@@ -6,9 +6,23 @@
   padding: 0;
 }
 body {
+  overflow: hidden;
+  background-repeat: no-repeat;
   background-image: url("./assets/img/background.jpg");
   background-position: center;
   background-size: cover;
+}
+.bg-black{
+  background-color: rgba(0, 0, 0, 0.404);
+}
+.popUpContent {
+  width: 100vw;
+  height: 100vh; 
+}
+.instructions{
+  position: absolute;
+  top: 10vh; 
+  width: 80vw;
 }
 .gameTitle {
   margin-top: 4vh;
@@ -79,6 +93,19 @@ canvas {
   align-items: center;
 }
 
+.infoIcon {
+  position: absolute;
+  top: 20px; 
+  left: 93vw; 
+  width: 4vw;
+  border: 2px solid white; 
+  border-radius: 3rem;
+  padding: 2px;
+  box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.2);
+}
+.infoIcon:hover {
+  cursor: pointer;
+}
 .footerPanel {
   position: relative;
   top: -80px;

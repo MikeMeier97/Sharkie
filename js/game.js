@@ -1,10 +1,11 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let infoActiv = false;
 
 function startGame() {
-  document.getElementById('game').classList.remove('d-none');
-  document.getElementById('startScreen').classList.add('d-none');
+  document.getElementById("game").classList.remove("d-none");
+  document.getElementById("startScreen").classList.add("d-none");
   initLevel();
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard);
@@ -12,21 +13,23 @@ function startGame() {
 function openFullScreen(elem) {
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
+  } else if (elem.webkitRequestFullscreen) {
+    /* Safari */
     elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
+  } else if (elem.msRequestFullscreen) {
+    /* IE11 */
     elem.msRequestFullscreen();
   }
 }
 function exitFullScreen() {
-  if(document.exitFullscreen){
+  if (document.exitFullscreen) {
     document.exitFullscreen;
   } else if (document.webkitExitFullscreen) {
     document.webkitExitFullscreen;
   }
 }
 function fullScreen() {
-  let fullScreen = document.getElementById('fullscreen');
+  let fullScreen = document.getElementById("fullscreen");
   openFullScreen(canvas);
 }
 document.addEventListener("keydown", (e) => {
@@ -63,3 +66,15 @@ document.addEventListener("keyup", (e) => {
     keyboard.D = false;
   }
 });
+
+function showInfo() {
+  if (!infoActiv) {
+    document.getElementById("infoPopup").classList.remove("d-none");
+    document.getElementById("popUpContent").classList.add("bg-black");
+    infoActiv = true; 
+  } else {
+    document.getElementById("infoPopup").classList.add("d-none");
+    document.getElementById("popUpContent").classList.remove("bg-black");
+    infoActiv = false; 
+  }
+}

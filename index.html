@@ -26,25 +26,39 @@
     <script src="./js/game.js"></script>
     <title>Sharkie</title>
   </head>
-  <body onload="">
-    <div id="gameContext">
-      <div class="d-none" id="game">
-        <div class="topPanel">
-          <img
-            onclick="world.stopBackgroundMusic()"
-            id="sound"
-            class="pointer"
-            src="./assets/icons/musicOn.png"
-            alt="sound"
-          />
-        </div>
-        <h1 class="gameTitle">Sharkie</h1>
-          <canvas id="canvas" width="720" height="480"></canvas>
-        <div class="footerPanel">
-          <div class="controllPanel"></div>
-          <div id="fullscreen">
+  <body id="body" class="bg-black">
+    <div class="headIcons">
+      <img
+        onclick="showInfo()"
+        class="infoIcon"
+        src="./assets/icons/information.png"
+        alt="infoIcon"
+      />
+    </div>
+    <div id="popUpContent">
+      <div id="gameContext">
+        <img
+          id="infoPopup"
+          class="instructions d-none"
+          src="./assets/img/botones/Instructions 1.png"
+          alt="Instructions"
+        />
+        <div class="d-none" id="game">
+          <div class="topPanel">
             <img
-              onclick="fullScreen()"
+              onclick="world.stopBackgroundMusic()"
+              id="sound"
+              class="pointer"
+              src="./assets/icons/musicOn.png"
+              alt="sound"
+            />
+          </div>
+          <h1 class="gameTitle">Sharkie</h1>
+          <canvas id="canvas" width="720" height="480"></canvas>
+          <div class="footerPanel">
+            <div class="controllPanel"></div>
+            <img
+              onclick="openFullScreen(canvas);"
               class="pointer"
               src="./assets/icons/larger.png"
               id="fullscreen"
@@ -52,20 +66,20 @@
             />
           </div>
         </div>
-      </div>
-      <div id="startScreen">
-        <h1 class="startTitle">Sharkie</h1>
-        <img
-          class="sharkieIMGStart"
-          src="./assets/img/sharkie/1.IDLE/1.png"
-          alt="sharkieImg"
-        />
-        <img
-          class="startButton pointer"
-          onclick="startGame()"
-          src="./assets/img/botones/Start/1.png"
-          alt="startButton"
-        />
+        <div id="startScreen">
+          <h1 class="startTitle">Sharkie</h1>
+          <img
+            class="sharkieIMGStart"
+            src="./assets/img/sharkie/1.IDLE/1.png"
+            alt="sharkieImg"
+          />
+          <img
+            class="startButton pointer"
+            onclick="startGame()"
+            src="./assets/img/botones/Start/1.png"
+            alt="startButton"
+          />
+        </div>
       </div>
     </div>
   </body>
