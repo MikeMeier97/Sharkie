@@ -30,9 +30,24 @@
     <div class="headIcons">
       <img
         onclick="showInfo()"
-        class="infoIcon"
+        id="infoPopupIcon"
+        class="infoIcon icon"
         src="./assets/icons/information.png"
         alt="infoIcon"
+      />
+      <img
+        onclick="openFullScreen(canvas);"
+        class="pointer icon d-none"
+        src="./assets/icons/larger.png"
+        id="fullscreen"
+        alt="fullscreen"
+      />
+      <img
+        onclick="world.stopBackgroundMusic()"
+        id="sound"
+        class="pointer icon d-none"
+        src="./assets/icons/musicOn.png"
+        alt="sound"
       />
     </div>
     <div id="popUpContent">
@@ -44,26 +59,11 @@
           alt="Instructions"
         />
         <div class="d-none" id="game">
-          <div class="topPanel">
-            <img
-              onclick="world.stopBackgroundMusic()"
-              id="sound"
-              class="pointer"
-              src="./assets/icons/musicOn.png"
-              alt="sound"
-            />
-          </div>
+          <div class="topPanel"></div>
           <h1 class="gameTitle">Sharkie</h1>
           <canvas id="canvas" width="720" height="480"></canvas>
           <div class="footerPanel">
             <div class="controllPanel"></div>
-            <img
-              onclick="openFullScreen(canvas);"
-              class="pointer"
-              src="./assets/icons/larger.png"
-              id="fullscreen"
-              alt="fullscreen"
-            />
           </div>
         </div>
         <div id="startScreen">

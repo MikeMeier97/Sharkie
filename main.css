@@ -92,12 +92,25 @@ canvas {
   flex-direction: column;
   align-items: center;
 }
-
 .infoIcon {
   position: absolute;
   top: 20px; 
   left: 93vw; 
   width: 4vw;
+}
+#fullscreen {
+  width: 4vw;
+  position: absolute; 
+  top: 20px; 
+  left: 79vw;
+}
+#sound {
+  width: 4vw;
+  position: absolute;
+  top: 20px; 
+  left: 86vw;
+}
+.icon {
   border: 2px solid white; 
   border-radius: 3rem;
   padding: 2px;
@@ -110,9 +123,6 @@ canvas {
   position: relative;
   top: -80px;
   left: 310px;
-}
-#sound {
-  width: 50px;
 }
 .gameOverTitle{
   width: 80vw;

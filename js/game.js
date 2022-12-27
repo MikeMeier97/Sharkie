@@ -6,6 +6,7 @@ let infoActiv = false;
 function startGame() {
   document.getElementById("game").classList.remove("d-none");
   document.getElementById("startScreen").classList.add("d-none");
+  addIcons();
   initLevel();
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard);
@@ -20,17 +21,6 @@ function openFullScreen(elem) {
     /* IE11 */
     elem.msRequestFullscreen();
   }
-}
-function exitFullScreen() {
-  if (document.exitFullscreen) {
-    document.exitFullscreen;
-  } else if (document.webkitExitFullscreen) {
-    document.webkitExitFullscreen;
-  }
-}
-function fullScreen() {
-  let fullScreen = document.getElementById("fullscreen");
-  openFullScreen(canvas);
 }
 document.addEventListener("keydown", (e) => {
   if (e.keyCode == 39) {
@@ -77,4 +67,14 @@ function showInfo() {
     document.getElementById("popUpContent").classList.remove("bg-black");
     infoActiv = false; 
   }
+}
+
+function removeIcons() {
+  document.getElementById('fullscreen').classList.add('d-none');
+  document.getElementById('sound').classList.add('d-none');
+  document.getElementById("infoPopupIcon").classList.add("d-none");
+}
+function addIcons() {
+  document.getElementById('fullscreen').classList.remove('d-none');
+  document.getElementById('sound').classList.remove('d-none');
 }

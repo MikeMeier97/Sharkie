@@ -152,6 +152,7 @@ class Character extends MovableObject {
     setTimeout(() => {
       this.loadGameOverScreen();
       this.clearAllInterval();
+      removeIcons();  
     }, 3000);
   }
   moveAnimate() {

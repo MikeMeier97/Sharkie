@@ -39,6 +39,7 @@ class DrawableObject {
     </div>`;
   }
   loadWinScreen() {
+    removeIcons();
     document.getElementById('gameContext').innerHTML = ``; 
     document.getElementById('gameContext').innerHTML = `
     <img class="winscreen" src="assets/img/botones/Tittles/You win/Mesa de trabajo 1.png">
