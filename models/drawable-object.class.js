@@ -42,7 +42,7 @@ class DrawableObject {
     removeIcons();
     document.getElementById('gameContext').innerHTML = ``; 
     document.getElementById('gameContext').innerHTML = `
-    <img class="winscreen" src="assets/img/botones/Tittles/YouWin/1.png">
+    <img class="winscreen" src="./assets/img/botones/Tittles/YouWin/1.png">
     <img class="tryAgainIconwin" onclick="window.location.reload();" src="./assets/img/botones/TryAgain/1.png">
     `; 
   }
