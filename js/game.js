@@ -2,8 +2,6 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let infoActiv = false;
-const controller = document.querySelector(".controller");
-const aktionButtons = document.querySelector(".aktionButtons");
 
 function startGame() {
   document.getElementById("game").classList.remove("d-none");
@@ -59,57 +57,6 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
-controller.addEventListener("touchstart", (e) => {
-  if (e.target.alt === "backward") {
-    keyboard.LEFT = true;
-    e.target.setPointerCapture(e.pointerId);
-  }
-  if (e.target.alt === "forward") {
-    keyboard.RIGHT = true;
-    e.target.setPointerCapture(e.pointerId);
-  }
-});
-
-controller.addEventListener("touchend", (e) => {
-  if (e.target.alt === "backward") {
-    keyboard.LEFT = false;
-    e.target.releasePointerCapture(e.pointerId);
-  }
-  if (e.target.alt === "forward") {
-    keyboard.RIGHT = false;
-    e.target.releasePointerCapture(e.pointerId);
-  }
-});
-
-aktionButtons.addEventListener("touchstart", (e) => {
-  if (e.target.alt === "buttonX") {
-    keyboard.X = true;
-    e.target.setPointerCapture(e.pointerId);
-  }
-  if (e.target.alt === "up") {
-    keyboard.UP = true;
-    e.target.setPointerCapture(e.pointerId);
-  }
-  if (e.target.alt === "down") {
-    keyboard.DOWN = true;
-    e.target.setPointerCapture(e.pointerId);
-  }
-});
-
-aktionButtons.addEventListener("touchend", (e) => {
-  if (e.target.alt === "buttonX") {
-    keyboard.X = false;
-    e.target.releasePointerCapture(e.pointerId);
-  }
-  if (e.target.alt === "up") {
-    keyboard.UP = false;
-    e.target.releasePointerCapture(e.pointerId);
-  }
-  if (e.target.alt === "down") {
-    keyboard.DOWN = false;
-    e.target.releasePointerCapture(e.pointerId);
-  }
-});
 function showInfo() {
   if (!infoActiv) {
     document.getElementById("infoPopup").classList.remove("d-none");

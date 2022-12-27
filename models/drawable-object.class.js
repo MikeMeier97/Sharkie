@@ -34,16 +34,16 @@ class DrawableObject {
     document.getElementById("gameContext").innerHTML = ``;
     document.getElementById("gameContext").innerHTML = `
     <div class="gameOver">
-        <img class="gameOverTitle" src="./assets/img/botones/Tittles/Game Over/Recurso 9.png">
-        <img class="tryAgainIcon" onclick="window.location.reload();" src="./assets/img/botones/Try again/Recurso 16.png">
+        <img class="gameOverTitle" src="./assets/img/botones/Tittles/GameOver/9.png">
+        <img class="tryAgainIcon" onclick="window.location.reload();" src="./assets/img/botones/TryAgain/1.png">
     </div>`;
   }
   loadWinScreen() {
     removeIcons();
     document.getElementById('gameContext').innerHTML = ``; 
     document.getElementById('gameContext').innerHTML = `
-    <img class="winscreen" src="assets/img/botones/Tittles/You win/Mesa de trabajo 1.png">
-    <img class="tryAgainIconwin" onclick="window.location.reload();" src="./assets/img/botones/Try again/Recurso 16.png">
+    <img class="winscreen" src="assets/img/botones/Tittles/YouWin/1.png">
+    <img class="tryAgainIconwin" onclick="window.location.reload();" src="./assets/img/botones/TryAgain/1.png">
     `; 
   }
 }

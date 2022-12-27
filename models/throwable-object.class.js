@@ -4,7 +4,7 @@ class ThrowableObject extends MovableObject {
 
   constructor(x, y) {
     super().loadImage(
-      "./assets/img/sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png"
+      "./assets/img/sharkie/4.Attack/BubbleTrap/Bubble.png"
     );
     this.x = x + 170;
     this.y = y + 140;

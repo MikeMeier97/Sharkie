@@ -4,28 +4,28 @@ class PufferFish extends MovableObject {
   energy = 10;
   isDead = false; 
   IMAGES_PUFFERFISH = [
-    "./assets/img/enemy/1.Puffer fish/1.Swim/1.swim1.png",
-    "./assets/img/enemy/1.Puffer fish/1.Swim/1.swim2.png",
-    "./assets/img/enemy/1.Puffer fish/1.Swim/1.swim3.png",
-    "./assets/img/enemy/1.Puffer fish/1.Swim/1.swim4.png",
-    "./assets/img/enemy/1.Puffer fish/1.Swim/1.swim5.png",
-    "./assets/img/enemy/1.Puffer fish/2.transition/1.transition1.png",
-    "./assets/img/enemy/1.Puffer fish/2.transition/1.transition2.png",
-    "./assets/img/enemy/1.Puffer fish/2.transition/1.transition3.png",
-    "./assets/img/enemy/1.Puffer fish/2.transition/1.transition4.png",
-    "./assets/img/enemy/1.Puffer fish/2.transition/1.transition5.png",
-    "./assets/img/enemy/1.Puffer fish/2.transition/1.transition4.png",
-    "./assets/img/enemy/1.Puffer fish/2.transition/1.transition3.png",
-    "./assets/img/enemy/1.Puffer fish/2.transition/1.transition2.png",
-    "./assets/img/enemy/1.Puffer fish/2.transition/1.transition1.png"
+    "./assets/img/enemy/PufferFish/1.Swim/1.swim1.png",
+    "./assets/img/enemy/PufferFish/1.Swim/1.swim2.png",
+    "./assets/img/enemy/PufferFish/1.Swim/1.swim3.png",
+    "./assets/img/enemy/PufferFish/1.Swim/1.swim4.png",
+    "./assets/img/enemy/PufferFish/1.Swim/1.swim5.png",
+    "./assets/img/enemy/PufferFish/2.transition/1.transition1.png",
+    "./assets/img/enemy/PufferFish/2.transition/1.transition2.png",
+    "./assets/img/enemy/PufferFish/2.transition/1.transition3.png",
+    "./assets/img/enemy/PufferFish/2.transition/1.transition4.png",
+    "./assets/img/enemy/PufferFish/2.transition/1.transition5.png",
+    "./assets/img/enemy/PufferFish/2.transition/1.transition4.png",
+    "./assets/img/enemy/PufferFish/2.transition/1.transition3.png",
+    "./assets/img/enemy/PufferFish/2.transition/1.transition2.png",
+    "./assets/img/enemy/PufferFish/2.transition/1.transition1.png"
   ];
   IMAGES_PUFFERFISH_DEAD = [
-    "./assets/img/enemy/1.Puffer fish/4.DIE/1.Dead 1.png",
-    "./assets/img/enemy/1.Puffer fish/4.DIE/1.Dead 2.png",
-    "./assets/img/enemy/1.Puffer fish/4.DIE/1.Dead 3.png",
+    "./assets/img/enemy/PufferFish/4.DIE/1.Dead 1.png",
+    "./assets/img/enemy/PufferFish/4.DIE/1.Dead 2.png",
+    "./assets/img/enemy/PufferFish/4.DIE/1.Dead 3.png",
   ];
   constructor(x, y, id) {
-    super().loadImage("./assets/img/enemy/1.Puffer fish/1.Swim/1.swim1.png");
+    super().loadImage("./assets/img/enemy/PufferFish/1.Swim/1.swim1.png");
     this.loadImages(this.IMAGES_PUFFERFISH);
     this.loadImages(this.IMAGES_PUFFERFISH_DEAD);
     this.x = x; //200 + Math.random() * 3600;
@@ -61,20 +61,20 @@ class JellyFish extends MovableObject {
   fishHeight = 0;
   swimDirection = 1;
   IMAGES_JELLYFISH = [
-    "./assets/img/enemy/2 Jelly fish/Súper dangerous/Pink 1.png",
-    "./assets/img/enemy/2 Jelly fish/Súper dangerous/Pink 2.png",
-    "./assets/img/enemy/2 Jelly fish/Súper dangerous/Pink 3.png",
-    "./assets/img/enemy/2 Jelly fish/Súper dangerous/Pink 4.png",
+    "./assets/img/enemy/JellyFish/Súper dangerous/Pink 1.png",
+    "./assets/img/enemy/JellyFish/Súper dangerous/Pink 2.png",
+    "./assets/img/enemy/JellyFish/Súper dangerous/Pink 3.png",
+    "./assets/img/enemy/JellyFish/Súper dangerous/Pink 4.png",
   ];
   IMAGES_JELLYFISH_DEAD = [
-    "./assets/img/enemy/2 Jelly fish/Dead/Lila/L1.png",
-    "./assets/img/enemy/2 Jelly fish/Dead/Lila/L2.png",
-    "./assets/img/enemy/2 Jelly fish/Dead/Lila/L3.png",
-    "./assets/img/enemy/2 Jelly fish/Dead/Lila/L4.png",
+    "./assets/img/enemy/JellyFish/Dead/Lila/L1.png",
+    "./assets/img/enemy/JellyFish/Dead/Lila/L2.png",
+    "./assets/img/enemy/JellyFish/Dead/Lila/L3.png",
+    "./assets/img/enemy/JellyFish/Dead/Lila/L4.png",
   ];
   constructor(x, y, id) {
     super().loadImage(
-      "./assets/img/enemy/2 Jelly fish/Súper dangerous/Pink 1.png"
+      "./assets/img/enemy/JellyFish/Súper dangerous/Pink 1.png"
     );
     this.loadImages(this.IMAGES_JELLYFISH);
     this.loadImages(this.IMAGES_JELLYFISH_DEAD);

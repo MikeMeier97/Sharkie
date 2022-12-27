@@ -13,14 +13,14 @@ class Character extends MovableObject {
     bottom: 60,
   };
   IMAGES_SHOOT = [
-    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/1.png",
-    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/2.png",
-    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/3.png",
-    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/4.png",
-    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/5.png",
-    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/6.png",
-    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/7.png",
-    "./assets/img/sharkie/4.Attack/Bubble trap/For Whale/8.png",
+    "./assets/img/sharkie/4.Attack/BubbleTrap/For Whale/1.png",
+    "./assets/img/sharkie/4.Attack/BubbleTrap/For Whale/2.png",
+    "./assets/img/sharkie/4.Attack/BubbleTrap/For Whale/3.png",
+    "./assets/img/sharkie/4.Attack/BubbleTrap/For Whale/4.png",
+    "./assets/img/sharkie/4.Attack/BubbleTrap/For Whale/5.png",
+    "./assets/img/sharkie/4.Attack/BubbleTrap/For Whale/6.png",
+    "./assets/img/sharkie/4.Attack/BubbleTrap/For Whale/7.png",
+    "./assets/img/sharkie/4.Attack/BubbleTrap/For Whale/8.png",
   ];
   IMAGES_IDLE = [
     "./assets/img/sharkie/1.IDLE/1.png",
