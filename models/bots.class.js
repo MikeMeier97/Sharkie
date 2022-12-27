@@ -61,10 +61,10 @@ class JellyFish extends MovableObject {
   fishHeight = 0;
   swimDirection = 1;
   IMAGES_JELLYFISH = [
-    "./assets/img/enemy/JellyFish/Súper dangerous/Pink 1.png",
-    "./assets/img/enemy/JellyFish/Súper dangerous/Pink 2.png",
-    "./assets/img/enemy/JellyFish/Súper dangerous/Pink 3.png",
-    "./assets/img/enemy/JellyFish/Súper dangerous/Pink 4.png",
+    "./assets/img/enemy/JellyFish/SuperDangerous/Pink 1.png",
+    "./assets/img/enemy/JellyFish/SuperDangerous/Pink 2.png",
+    "./assets/img/enemy/JellyFish/SuperDangerous/Pink 3.png",
+    "./assets/img/enemy/JellyFish/SuperDangerous/Pink 4.png",
   ];
   IMAGES_JELLYFISH_DEAD = [
     "./assets/img/enemy/JellyFish/Dead/Lila/L1.png",
@@ -74,7 +74,7 @@ class JellyFish extends MovableObject {
   ];
   constructor(x, y, id) {
     super().loadImage(
-      "./assets/img/enemy/JellyFish/Súper dangerous/Pink 1.png"
+      "./assets/img/enemy/JellyFish/SuperDangerous/Pink 1.png"
     );
     this.loadImages(this.IMAGES_JELLYFISH);
     this.loadImages(this.IMAGES_JELLYFISH_DEAD);

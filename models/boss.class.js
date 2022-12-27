@@ -7,16 +7,16 @@ class Endboss extends MovableObject {
   timeOut = true; 
   isDead = false;
   IMAGES_BOSS_INTRO = [
-    "./assets/img/enemy/Boss/1.Introduce/1.png",
-    "./assets/img/enemy/Boss/1.Introduce/2.png",
-    "./assets/img/enemy/Boss/1.Introduce/3.png",
-    "./assets/img/enemy/Boss/1.Introduce/4.png",
-    "./assets/img/enemy/Boss/1.Introduce/5.png",
-    "./assets/img/enemy/Boss/1.Introduce/6.png",
-    "./assets/img/enemy/Boss/1.Introduce/7.png",
-    "./assets/img/enemy/Boss/1.Introduce/8.png",
-    "./assets/img/enemy/Boss/1.Introduce/9.png",
-    "./assets/img/enemy/Boss/1.Introduce/10.png",
+    "./assets/img/enemy/Boss/Introduce/1.png",
+    "./assets/img/enemy/Boss/Introduce/2.png",
+    "./assets/img/enemy/Boss/Introduce/3.png",
+    "./assets/img/enemy/Boss/Introduce/4.png",
+    "./assets/img/enemy/Boss/Introduce/5.png",
+    "./assets/img/enemy/Boss/Introduce/6.png",
+    "./assets/img/enemy/Boss/Introduce/7.png",
+    "./assets/img/enemy/Boss/Introduce/8.png",
+    "./assets/img/enemy/Boss/Introduce/9.png",
+    "./assets/img/enemy/Boss/Introduce/10.png",
   ];
   IMAGES_BOSS_BITE = [
     "./assets/img/enemy/Boss/Attack/1.png",
@@ -27,19 +27,19 @@ class Endboss extends MovableObject {
     "./assets/img/enemy/Boss/Attack/6.png",
   ];
   IMAGES_BOSS_SWIM = [
-    "./assets/img/enemy/Boss/2.floating/1.png",
-    "./assets/img/enemy/Boss/2.floating/2.png",
-    "./assets/img/enemy/Boss/2.floating/3.png",
-    "./assets/img/enemy/Boss/2.floating/4.png",
-    "./assets/img/enemy/Boss/2.floating/5.png",
-    "./assets/img/enemy/Boss/2.floating/6.png",
-    "./assets/img/enemy/Boss/2.floating/7.png",
-    "./assets/img/enemy/Boss/2.floating/8.png",
-    "./assets/img/enemy/Boss/2.floating/9.png",
-    "./assets/img/enemy/Boss/2.floating/10.png",
-    "./assets/img/enemy/Boss/2.floating/11.png",
-    "./assets/img/enemy/Boss/2.floating/12.png",
-    "./assets/img/enemy/Boss/2.floating/13.png",
+    "./assets/img/enemy/Boss/floating/1.png",
+    "./assets/img/enemy/Boss/floating/2.png",
+    "./assets/img/enemy/Boss/floating/3.png",
+    "./assets/img/enemy/Boss/floating/4.png",
+    "./assets/img/enemy/Boss/floating/5.png",
+    "./assets/img/enemy/Boss/floating/6.png",
+    "./assets/img/enemy/Boss/floating/7.png",
+    "./assets/img/enemy/Boss/floating/8.png",
+    "./assets/img/enemy/Boss/floating/9.png",
+    "./assets/img/enemy/Boss/floating/10.png",
+    "./assets/img/enemy/Boss/floating/11.png",
+    "./assets/img/enemy/Boss/floating/12.png",
+    "./assets/img/enemy/Boss/floating/13.png",
 
   ];
   IMAGES_BOSS_RIP = [
