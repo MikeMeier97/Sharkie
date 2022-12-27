@@ -16,7 +16,6 @@
     <script src="./models/bottle-bar.class.js"></script>
     <script src="./models/coin-bar.class.js"></script>
     <script src="./models/background-object.calss.js"></script>
-    <script src="./models/light.class.js"></script>
     <script src="./models/lvl.class.js"></script>
     <script src="./models/boss.class.js"></script>
     <script src="./models/world.class.js"></script>
@@ -26,7 +25,7 @@
     <script src="./js/game.js"></script>
     <title>Sharkie</title>
   </head>
-  <body id="body" class="bg-black">
+  <body onload="startGame()">
     <div class="headIcons">
       <img
         onclick="showInfo()"
@@ -63,7 +62,17 @@
           <h1 class="gameTitle">Sharkie</h1>
           <canvas id="canvas" width="720" height="480"></canvas>
           <div class="footerPanel">
-            <div class="controllPanel"></div>
+            <div class="controllPanel">
+              <div class="controller">
+                <img src="./assets/icons/backward.png" alt="backward" />
+                <img src="./assets/icons/forward.png" alt="forward" />
+              </div>
+              <div class="aktionButtons">
+                <img src="./assets/icons/buttonX.png" alt="buttonX" />
+                <img src="./assets/icons/up.png" alt="up" />
+                <img src="./assets/icons/down.png" alt="down" />
+              </div>
+            </div>
           </div>
         </div>
         <div id="startScreen">

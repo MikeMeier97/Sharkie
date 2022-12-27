@@ -56,7 +56,6 @@ class World {
     }
   }
   hitEnemy(enemy) {
-    console.log(enemy);
     if (enemy == 15) {
       this.level.enemies[enemy].energy -= 25;
       this.level.enemies[enemy].hit();
