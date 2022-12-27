@@ -20,9 +20,9 @@ class PufferFish extends MovableObject {
     "./assets/img/enemy/PufferFish/2.transition/1.transition1.png"
   ];
   IMAGES_PUFFERFISH_DEAD = [
-    "./assets/img/enemy/PufferFish/4.DIE/1.Dead 1.png",
-    "./assets/img/enemy/PufferFish/4.DIE/1.Dead 2.png",
-    "./assets/img/enemy/PufferFish/4.DIE/1.Dead 3.png",
+    "./assets/img/enemy/PufferFish/4.DIE/1.Dead1.png",
+    "./assets/img/enemy/PufferFish/4.DIE/1.Dead2.png",
+    "./assets/img/enemy/PufferFish/4.DIE/1.Dead3.png",
   ];
   constructor(x, y, id) {
     super().loadImage("./assets/img/enemy/PufferFish/1.Swim/1.swim1.png");
@@ -61,10 +61,10 @@ class JellyFish extends MovableObject {
   fishHeight = 0;
   swimDirection = 1;
   IMAGES_JELLYFISH = [
-    "./assets/img/enemy/JellyFish/SuperDangerous/Pink 1.png",
-    "./assets/img/enemy/JellyFish/SuperDangerous/Pink 2.png",
-    "./assets/img/enemy/JellyFish/SuperDangerous/Pink 3.png",
-    "./assets/img/enemy/JellyFish/SuperDangerous/Pink 4.png",
+    "./assets/img/enemy/JellyFish/SuperDangerous/Pink1.png",
+    "./assets/img/enemy/JellyFish/SuperDangerous/Pink2.png",
+    "./assets/img/enemy/JellyFish/SuperDangerous/Pink3.png",
+    "./assets/img/enemy/JellyFish/SuperDangerous/Pink4.png",
   ];
   IMAGES_JELLYFISH_DEAD = [
     "./assets/img/enemy/JellyFish/Dead/Lila/L1.png",
@@ -74,7 +74,7 @@ class JellyFish extends MovableObject {
   ];
   constructor(x, y, id) {
     super().loadImage(
-      "./assets/img/enemy/JellyFish/SuperDangerous/Pink 1.png"
+      "./assets/img/enemy/JellyFish/SuperDangerous/Pink1.png"
     );
     this.loadImages(this.IMAGES_JELLYFISH);
     this.loadImages(this.IMAGES_JELLYFISH_DEAD);
