@@ -57,6 +57,7 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
+
 function showInfo() {
   if (!infoActiv) {
     document.getElementById("infoPopup").classList.remove("d-none");
