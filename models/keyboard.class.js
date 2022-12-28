@@ -7,6 +7,7 @@ class Keyboard {
   D = false;
   constructor() {
     this.bindBtsPressEvents();
+    this.bindKeyPressEvents();
   }
 
   bindBtsPressEvents() {
@@ -49,6 +50,42 @@ class Keyboard {
     document.getElementById('btnShoot').addEventListener('touchend', (e) => {
       e.preventDefault();
       this.D = false;
+    });
+  }
+  bindKeyPressEvents() {
+    document.addEventListener("keydown", (e) => {
+      if (e.keyCode == 39) {
+        this.RIGHT = true;
+      }
+      if (e.keyCode == 37) {
+        this.LEFT = true;
+      }
+      if (e.keyCode == 38) {
+        this.UP = true;
+      }
+      if (e.keyCode == 40) {
+        this.DOWN = true;
+      }
+      if (e.keyCode == 68) {
+        this.D = true;
+      }
+    });
+    document.addEventListener("keyup", (e) => {
+      if (e.keyCode == 39) {
+        this.RIGHT = false;
+      }
+      if (e.keyCode == 37) {
+        this.LEFT = false;
+      }
+      if (e.keyCode == 38) {
+        this.UP = false;
+      }
+      if (e.keyCode == 40) {
+        this.DOWN = false;
+      }
+      if (e.keyCode == 68) {
+        this.D = false;
+      }
     });
   }
 }
