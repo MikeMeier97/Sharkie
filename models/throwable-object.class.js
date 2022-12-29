@@ -10,8 +10,12 @@ class ThrowableObject extends MovableObject {
     this.y = y + 140;
     this.trow();
   }
+
+  /**
+   * the speed of the shoot bubble  
+   */
   trow() {
-    this.speedY = 30;
+    this.speedY = 30; 
     setInterval(() => {
       this.x += 10;
     }, 5);

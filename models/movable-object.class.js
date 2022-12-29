@@ -31,15 +31,30 @@ class MovableObject extends DrawableObject {
   moveDown() {
     this.y += this.speed;
   }
+
+  /**
+   * playing the animation set by setinterval
+   * @param {images} images 
+   */
   playAnimation(images) {
     let i = this.currentImage % images.length;
     let path = images[i];
     this.img = this.imageCache[path];
     this.currentImage++;
   }
+
+  /**
+   * checking for alive 
+   * @returns false / true 
+   */
   isDead() {
     return this.energy == 0;
   }
+
+  /**
+   * playing animation once // deadAnimatio
+   * @param {images} images 
+   */
   async playAnimationOnce(images) {
     for (let i = 0; i < images.length; i++) {
       let path = images[i];
@@ -48,6 +63,10 @@ class MovableObject extends DrawableObject {
       await sleep(200);
     }
   }
+
+  /**
+   * getting the time of the hit for a 1 second animation
+   */
   hit() {
     this.energy -= 5;
     if (this.energy < 0) {
@@ -57,14 +76,28 @@ class MovableObject extends DrawableObject {
     }
   }
 
+
+  /**
+   * let the time gone for the hit animation 
+   * @returns true / false 
+   */
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
     return timepassed < 1;
   }
+
+  /**
+   * stop all interval
+   */
   clearAllInterval() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
   }
+
+  /**
+   * bot hit and die animation
+   * @param {images} img 
+   */
   botHit(img){
     this.playAnimationOnce(img);
     this.y -= 10;

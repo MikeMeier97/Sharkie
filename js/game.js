@@ -3,6 +3,10 @@ let world;
 let keyboard = new Keyboard();
 let infoActiv = false;
 
+
+/**
+ * Load the game context 
+ */
 function startGame() {
   document.getElementById("game").classList.remove("d-none");
   document.getElementById("startScreen").classList.add("d-none");
@@ -11,6 +15,11 @@ function startGame() {
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard);
 }
+
+/**
+ * load the fullscreen
+ * @param {canvas} elem 
+ */
 function openFullScreen(elem) {
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
@@ -22,42 +31,11 @@ function openFullScreen(elem) {
     elem.msRequestFullscreen();
   }
 }
-document.addEventListener("keydown", (e) => {
-  if (e.keyCode == 39) {
-    keyboard.RIGHT = true;
-  }
-  if (e.keyCode == 37) {
-    keyboard.LEFT = true;
-  }
-  if (e.keyCode == 38) {
-    keyboard.UP = true;
-  }
-  if (e.keyCode == 40) {
-    keyboard.DOWN = true;
-  }
-  if (e.keyCode == 68) {
-    keyboard.D = true;
-  }
-});
-document.addEventListener("keyup", (e) => {
-  if (e.keyCode == 39) {
-    keyboard.RIGHT = false;
-  }
-  if (e.keyCode == 37) {
-    keyboard.LEFT = false;
-  }
-  if (e.keyCode == 38) {
-    keyboard.UP = false;
-  }
-  if (e.keyCode == 40) {
-    keyboard.DOWN = false;
-  }
-  if (e.keyCode == 68) {
-    keyboard.D = false;
-  }
-});
 
 
+/**
+ * show the info img 
+ */
 function showInfo() {
   if (!infoActiv) {
     document.getElementById("infoPopup").classList.remove("d-none");
@@ -70,11 +48,20 @@ function showInfo() {
   }
 }
 
+
+/**
+ * remove the icons (sound, fullscreen)
+ */
 function removeIcons() {
   document.getElementById("fullscreen").classList.add("d-none");
   document.getElementById("sound").classList.add("d-none");
   document.getElementById("infoPopupIcon").classList.add("d-none");
 }
+
+
+/**
+ * show the icons (sound, fullscreen)
+ */
 function addIcons() {
   document.getElementById("fullscreen").classList.remove("d-none");
   document.getElementById("sound").classList.remove("d-none");

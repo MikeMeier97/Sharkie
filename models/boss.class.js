@@ -5,7 +5,7 @@ class Endboss extends MovableObject {
   boss_spawned = false;
   indexTimeOut = 0; 
   timeOut = true; 
-  isDead = false;
+  isDead = false; 
   IMAGES_BOSS_INTRO = [
     "./assets/img/enemy/Boss/Introduce/1.png",
     "./assets/img/enemy/Boss/Introduce/2.png",
@@ -61,12 +61,8 @@ class Endboss extends MovableObject {
   win_sound = new Audio("./audio/win.mp3");
 
   constructor(x, y, id) {
-    super().loadImage(this.IMAGES_BOSS_INTRO[0]);
-    this.loadImages(this.IMAGES_BOSS_SWIM);
-    this.loadImages(this.IMAGES_BOSS_INTRO);
-    this.loadImages(this.IMAGES_BOSS_RIP);
-    this.loadImages(this.IMAGES_BOSS_HURT);
-    this.loadImages(this.IMAGES_BOSS_BITE);
+    super();
+    this.loadallImages();
     this.resetTimeOut(); 
     this.x = x;
     this.y = y;
@@ -75,48 +71,95 @@ class Endboss extends MovableObject {
       this.animate();
     }, 4000);
   }
+
+
+  /**
+   * animate the boss
+   */
   animate() {
     let i = 0;
-    setTimeout(() => {
+    setTimeout(() => { // let world load bevor animate
       setInterval(() => {
-        if (this.world.character.x > 3200) {
-          this.boss_spawned = true;
-        }
+        this.letBossSpawn();
         if (this.boss_spawned) {
           this.world.background_music.pause();
           if (i < 10) {
-            this.boss_audio_spawn.play();
-            this.playAnimation(this.IMAGES_BOSS_INTRO);
+            this.bossSpawnIntro();
           } else if (this.energy <= 0) {
             this.winGame();
           } else if (this.isHurt()) {
             this.playAnimation(this.IMAGES_BOSS_HURT);
           } else if(!this.timeOut){
-            this.playAnimation(this.IMAGES_BOSS_BITE);
-            this.boss_bite_sound.play();
-            this.indexTimeOut++; 
-            if(this.indexTimeOut == 6) {
-              this.timeOut = true;
-            }
+            this.bossBiteAnimation();
           } else if(this.indexTimeOut >= 6){
-            this.boss_audio_spawn.pause();
-            this.x -= 10;
-            this.playAnimation(this.IMAGES_BOSS_SWIM);
-            if(!this.world.mute){
-              this.boss_background_music.play();
-            }
+            this.bossSwimAnimation();
           }
           i++;
         }
       }, 150);
     }, 1000);
   }
+
+
+  /**
+   * playing spawn intro by boss 
+   */
+  bossSpawnIntro() {
+    this.boss_audio_spawn.play();
+    this.playAnimation(this.IMAGES_BOSS_INTRO);
+  }
+
+
+  /**
+   * spawn the boss 
+   */
+  letBossSpawn() {
+    if (this.world.character.x > 3200) {
+      this.boss_spawned = true;
+    }
+  }
+
+
+  /**
+   * playing swim animation by boss 
+   */
+  bossSwimAnimation() {
+    this.boss_audio_spawn.pause();
+    this.x -= 10;
+    this.playAnimation(this.IMAGES_BOSS_SWIM);
+    if(!this.world.mute){
+      this.boss_background_music.play();
+    }
+  }
+
+
+  /**
+   * playing bite animation by boss
+   */
+  bossBiteAnimation() {
+    this.playAnimation(this.IMAGES_BOSS_BITE);
+    this.boss_bite_sound.play();
+    this.indexTimeOut++; 
+    if(this.indexTimeOut == 6) {
+      this.timeOut = true;
+    }
+  }
+
+
+  /**
+   * reset the timeOut to 0
+   */
   resetTimeOut() {
     setInterval(() => {
       this.timeOut = false;
       this.indexTimeOut = 0;  
     }, 5000);
   }
+
+
+  /**
+   * play the boss audio 
+   */
   bossAudio() {
     setTimeout(() => {
       this.boss_audio_spawn.play();
@@ -126,6 +169,11 @@ class Endboss extends MovableObject {
       this.boss_background_music.play();
     }, 1000);
   }
+
+
+  /**
+   * play the animation dead by boss 
+   */
   winGame() {
     if (!this.isDead) {
       this.playAnimationOnce(this.IMAGES_BOSS_RIP);
@@ -137,5 +185,18 @@ class Endboss extends MovableObject {
       }, 2500);
       this.isDead = true;
     }
+  }
+
+
+  /**
+ * load all images 
+ */
+  loadallImages() {
+    this.loadImage(this.IMAGES_BOSS_INTRO[0]);
+    this.loadImages(this.IMAGES_BOSS_SWIM);
+    this.loadImages(this.IMAGES_BOSS_INTRO);
+    this.loadImages(this.IMAGES_BOSS_RIP);
+    this.loadImages(this.IMAGES_BOSS_HURT);
+    this.loadImages(this.IMAGES_BOSS_BITE);
   }
 }

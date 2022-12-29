@@ -18,6 +18,9 @@ class Coin extends MovableObject {
     this.animate();
   }
 
+  /**
+   * animate the coins 
+   */
   animate() {
     setInterval(() => {
       this.playAnimation(this.IMAGES_COIN);
@@ -45,6 +48,10 @@ class Bottle extends Coin {
     this.y = y;
     this.animate();
   }
+
+  /**
+   * animate the bottle
+   */
   animate() {
     setInterval(() => {
       this.playAnimation(this.IMAGES_BOTTLE);

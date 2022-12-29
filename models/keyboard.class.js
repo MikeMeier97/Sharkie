@@ -10,48 +10,57 @@ class Keyboard {
     this.bindKeyPressEvents();
   }
 
+
+  /**
+   * mobile touching controll service function
+   */
   bindBtsPressEvents() {
-    document.getElementById('btnLeft').addEventListener('touchstart', (e) => {
+    document.getElementById("btnLeft").addEventListener("touchstart", (e) => {
       e.preventDefault();
       this.LEFT = true;
     });
-    document.getElementById('btnLeft').addEventListener('touchend', (e) => {
+    document.getElementById("btnLeft").addEventListener("touchend", (e) => {
       e.preventDefault();
       this.LEFT = false;
     });
-    document.getElementById('btnRight').addEventListener('touchstart', (e) => {
+    document.getElementById("btnRight").addEventListener("touchstart", (e) => {
       e.preventDefault();
       this.RIGHT = true;
     });
-    document.getElementById('btnRight').addEventListener('touchend', (e) => {
+    document.getElementById("btnRight").addEventListener("touchend", (e) => {
       e.preventDefault();
       this.RIGHT = false;
-    });    
-    document.getElementById('btnUp').addEventListener('touchstart', (e) => {
+    });
+    document.getElementById("btnUp").addEventListener("touchstart", (e) => {
       e.preventDefault();
       this.UP = true;
     });
-    document.getElementById('btnUp').addEventListener('touchend', (e) => {
+    document.getElementById("btnUp").addEventListener("touchend", (e) => {
       e.preventDefault();
       this.UP = false;
-    });    
-    document.getElementById('btnDown').addEventListener('touchstart', (e) => {
+    });
+    document.getElementById("btnDown").addEventListener("touchstart", (e) => {
       e.preventDefault();
       this.DOWN = true;
     });
-    document.getElementById('btnDown').addEventListener('touchend', (e) => {
+    document.getElementById("btnDown").addEventListener("touchend", (e) => {
       e.preventDefault();
       this.DOWN = false;
     });
-    document.getElementById('btnShoot').addEventListener('touchstart', (e) => {
+    document.getElementById("btnShoot").addEventListener("touchstart", (e) => {
       e.preventDefault();
       this.D = true;
     });
-    document.getElementById('btnShoot').addEventListener('touchend', (e) => {
+    document.getElementById("btnShoot").addEventListener("touchend", (e) => {
       e.preventDefault();
       this.D = false;
     });
   }
+
+
+  /**
+   * pc guys keyboard keydown function service 
+   */
   bindKeyPressEvents() {
     document.addEventListener("keydown", (e) => {
       if (e.keyCode == 39) {

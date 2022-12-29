@@ -1,25 +1,39 @@
 let level1;
+
+/**
+ * load the level when press start game btn 
+ */
 function initLevel() {
   level1 = new Level(
+
+
+    /**
+     * add the bots 
+     */
     [
-      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 0),
-      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 1),
-      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 2),
-      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 3),
-      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 4),
-      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 5),
-      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 6),
-      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 7),
-      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 8),
-      new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 9),
-      new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 10),
-      new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 11),
-      new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 12),
-      new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 13),
-      new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250, 14),
+      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new PufferFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
+      new JellyFish(200 + Math.random() * 3600, 50 + Math.random() * 250),
       new Endboss(3900, 50, "boss"),
     ],
-    [
+
+
+    /**
+     * add the background objects
+     */
+    [ 
       new BackgroundObject("./assets/img/background/Layers/Water/D1.png", 0),
       new BackgroundObject("./assets/img/background/Layers/Fondo2/D1.png", 0),
       new BackgroundObject("./assets/img/background/Layers/Fondo1/D1.png", 0),
@@ -51,11 +65,21 @@ function initLevel() {
       new BackgroundObject( "./assets/img/background/Layers/Floor/D2.png", 720 * 5),
       new BackgroundObject( "./assets/img/background/Layers/Light/2.png", 720 * 5),
     ],
+
+
+    /**
+     * add the coin items 
+     */
     [
       new Coin(600, 350), 
       new Coin(700, 350), 
       new Coin(900, 350)
     ],
+
+
+    /**
+     * add the bottle items
+     */
     [
       new Bottle(300, 350), 
       new Bottle(380, 340),

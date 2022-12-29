@@ -10,19 +10,27 @@ class Bottlebar extends DrawableObject {
   percentage = 0;
 
   constructor() {
-    super();
-    this.loadImages(this.IMAGES_BOTTLEBAR);
+    super().loadImages(this.IMAGES_BOTTLEBAR);
     this.x = 20;
     this.y = 10;
     this.width = 200;
     this.height = 60;
-    this.setPercentage(0);
+    this.setPercentage(0); // set initial position
   }
+  /**
+   * set percentage für statusbar 
+   * @param {number} percentage 
+   */
   setPercentage(percentage) {
     this.percentage = percentage;
     let path = this.IMAGES_BOTTLEBAR[this.resolveImageIndex()];
     this.img = this.imageCache[path];
   }
+
+  /**
+   * determines the value of filling 
+   * @returns index of statusbar filling
+   */
   resolveImageIndex() {
     if (this.percentage == 100) {
       return 5;

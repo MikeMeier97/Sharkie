@@ -23,17 +23,28 @@ class World {
     this.run();
     this.background_music.play();
   }
+
+  /**
+   * music will stop if someone hit the music button in the top
+   */
   stopBackgroundMusic() {
-    if(!this.mute) {
-    document.getElementById('sound').src = './assets/icons/musicOff.png';
-    this.background_music.pause();
-    this.mute = true;
-  } else { 
-    document.getElementById('sound').src = './assets/icons/musicOn.png';
-    this.background_music.play();
-    this.mute = false;
+    if (!this.mute) {
+      document.getElementById("sound").src = "./assets/icons/musicOff.png";
+      this.background_music.pause();
+      this.mute = true;
+    } else {
+      document.getElementById("sound").src = "./assets/icons/musicOn.png";
+      this.background_music.play();
+      this.mute = false;
+    }
   }
-  }
+
+  /**
+   * Checking for colliding with someone 
+   * @param {obj} mo 
+   * @param {obj} object 
+   * @returns 
+   */
   isColliding(mo, object) {
     return (
       object.x + object.width - object.offset.right > mo.x + mo.offset.left &&
@@ -43,6 +54,9 @@ class World {
     );
   }
 
+  /**
+   * checks the buttle for collision 
+   */
   checkCollisionBubbleEnemy() {
     if (this.throwableObjects.length > 0) {
       this.level.enemies.forEach((enemy, enemyIndex) => {
@@ -55,6 +69,11 @@ class World {
       });
     }
   }
+
+  /**
+   * sharkie hits an enemy 
+   * @param {obj} enemy 
+   */
   hitEnemy(enemy) {
     if (enemy == 15) {
       this.level.enemies[enemy].energy -= 25;
@@ -64,6 +83,9 @@ class World {
     }
   }
 
+  /**
+   * checks for hitting a enemy 
+   */
   checkCollisionsEnemy() {
     this.level.enemies.forEach((enemy) => {
       if (this.isColliding(enemy, this.character)) {
@@ -72,6 +94,10 @@ class World {
       }
     });
   }
+
+  /**
+   * checks for hitting a coin
+   */
   checkCollisionsCoin() {
     this.level.coins.forEach((coin, coinIndex) => {
       if (this.isColliding(coin, this.character)) {
@@ -84,6 +110,10 @@ class World {
       }
     });
   }
+
+  /**
+   * checks for hitting a bottle 
+   */
   checkCollisionsBottle() {
     this.level.bottle.forEach((bottle, bottleIndex) => {
       if (this.isColliding(bottle, this.character)) {
@@ -91,11 +121,15 @@ class World {
           this.character.bottleLvl += 20;
           this.bottle_sound.play();
           this.bottleBar.setPercentage(this.character.bottleLvl);
-            this.level.bottle.splice(bottleIndex, 1);
+          this.level.bottle.splice(bottleIndex, 1);
         }
       }
     });
   }
+
+  /**
+   * this function will animate the checking functions evry 0,05 sec. 
+   */
   run() {
     setInterval(() => {
       this.checkCollisionsEnemy();
@@ -105,6 +139,10 @@ class World {
       this.checkCollisionBubbleEnemy();
     }, 50);
   }
+
+  /**
+   * shoot the bubble 
+   */
   checkThrowobjects() {
     if (
       this.keyboard.D &&
@@ -120,12 +158,15 @@ class World {
       this.bottleBar.setPercentage(this.character.bottleLvl);
     }
   }
+
+
+  /**
+   * draw the elements on the canvas. 
+   */
   draw() {
     try {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
       this.ctx.translate(this.camera_x, 0);
-
       this.addObjectsToMap(this.level.backgroundObjects);
       this.ctx.translate(-this.camera_x, 0);
       this.addToMap(this.statusBar);
@@ -133,28 +174,37 @@ class World {
       this.addToMap(this.coinBar);
       this.ctx.translate(this.camera_x, 0);
       this.addToMap(this.character);
-
       this.addObjectsToMap(this.level.enemies);
       this.addObjectsToMap(this.level.coins);
       this.addObjectsToMap(this.level.bottle);
       this.addObjectsToMap(this.throwableObjects);
       this.ctx.translate(-this.camera_x, 0);
 
-      let self = this;
+      let self = this; // this will not work. Than, we make self.
       requestAnimationFrame(function () {
         self.draw();
       });
-    } catch (e) {
+    } catch (e) { // if one picture was not found we send you an error :) 
       console.warn("Error loading image", e);
-      console.log("Could not load image", this.img);
+      console.log("Could not load image:", this.img);
     }
   }
+
+  /**
+   * add a object to canvas
+   * @param {obj} objects 
+   */
   addObjectsToMap(objects) {
     objects.forEach((o) => {
       this.addToMap(o);
     });
   }
 
+
+  /**
+   * the object looks in the right direction in wich it also swims 
+   * @param {obj} mo 
+   */
   addToMap(mo) {
     if (mo.otherDirection) {
       this.flipImage(mo);
@@ -166,18 +216,32 @@ class World {
       this.flipImageBack(mo);
     }
   }
+
+  /**
+   * givs the mobs the world and his functions  
+   */
   setWorld() {
     this.character.world = this;
     for (let i = 0; i < this.level.enemies.length; i++) {
       this.level.enemies[i].world = this;
     }
   }
+
+  /**
+   * the image will flippt 
+   * @param {obj} mo 
+   */
   flipImage(mo) {
     this.ctx.save();
     this.ctx.translate(mo.width, 0);
     this.ctx.scale(-1, 1);
     mo.x = mo.x * -1;
   }
+
+  /**
+   * the image will flippt back 
+   * @param {obj} mo 
+   */
   flipImageBack(mo) {
     mo.x = mo.x * -1;
     this.ctx.restore();
