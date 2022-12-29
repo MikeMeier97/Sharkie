@@ -96,18 +96,7 @@ canvas {
   opacity: 0.7;
   display: none;
 }
-.aktionButtons{
-  display: flex;
-  width: 30px;
-  position: relative;
-  bottom: 50px;
-  right: 15vw;
-}
-.controller {
-  position: relative;
-  top: 20px; 
-  right: 65vw;
-}
+
 .infoIcon {
   position: absolute;
   top: 20px; 
@@ -135,11 +124,7 @@ canvas {
 .infoIcon:hover {
   cursor: pointer;
 }
-.footerPanel {
-  position: relative;
-  top: -80px;
-  left: 310px;
-}
+
 .gameOverTitle{
   width: 80vw;
 }
@@ -157,13 +142,25 @@ canvas {
 .pointer:hover {
   cursor: pointer;
 }
+.controllPanel img{
+   width: 60px;
+}
+.footerPanel {
+  position: relative;
+  bottom: 20vh; 
+}
 
 @media only screen and (max-height: 800px){
+  .sharkieIMGStart {
+    display: none;
+  }
   .gameTitle {
     display: none;
   }
   .controllPanel{
-    display: block;
+    display: flex;
+    gap: 350px;
+    object-fit: cover;
   }
   canvas{
     margin-bottom: 5vh;
