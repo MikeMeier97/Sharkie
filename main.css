@@ -149,18 +149,16 @@ canvas {
   position: relative;
   bottom: 20vh; 
 }
-
-@media only screen and (max-height: 800px){
-  .sharkieIMGStart {
-    display: none;
-  }
-  .gameTitle {
-    display: none;
-  }
+@media only screen and (max-height: 500px){
   .controllPanel{
     display: flex;
     gap: 350px;
     object-fit: cover;
+  }
+}
+@media only screen and (max-height: 800px){
+  .gameTitle {
+    display: none;
   }
   canvas{
     margin-bottom: 5vh;
@@ -182,6 +180,9 @@ canvas {
 @media(max-height: 500px) {
   canvas{
     margin: 0; 
+  }
+  .sharkieIMGStart {
+    display: none;
   }
   #fullscreen {
     display: none;
