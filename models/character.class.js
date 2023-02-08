@@ -113,7 +113,8 @@ class Character extends MovableObject {
     }, 1000 / 60);
     setInterval(() => {
       if (this.isDead()) {
-        this.gameOver();
+        this.gameOver(); 
+        clearInterval(65);
       } else if (this.isHurt()) {
         this.sharkieHurt();
       } else if (this.keySelected()) {
