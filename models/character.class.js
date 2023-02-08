@@ -113,8 +113,8 @@ class Character extends MovableObject {
     }, 1000 / 60);
     setInterval(() => {
       if (this.isDead()) {
+        this.clearAllInterval();
         this.gameOver(); 
-        clearInterval(65);
       } else if (this.isHurt()) {
         this.sharkieHurt();
       } else if (this.keySelected()) {
@@ -210,7 +210,6 @@ class Character extends MovableObject {
     this.dead_sound.play();
     setTimeout(() => {
       this.loadGameOverScreen();
-      this.clearAllInterval();
       removeIcons();
     }, 3000);
   }

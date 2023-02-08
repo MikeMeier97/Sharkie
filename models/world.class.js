@@ -156,7 +156,7 @@ class World {
       this.character.bottleLvl -= 20;
       setTimeout(() => {
         this.throwableObjects.splice(0, 1);
-      }, 500);
+      }, 1000);
       this.bottleBar.setPercentage(this.character.bottleLvl);
     }
   }
