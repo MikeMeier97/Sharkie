@@ -153,9 +153,12 @@ canvas {
   bottom: 20vh; 
 }
 @media only screen {
+  #fullscreen {
+    display: none;
+  }
   .controllPanel{
     display: flex;
-    gap: 50vw;
+    gap: 20vw;
     object-fit: cover;
   }
   .footerPanel {
