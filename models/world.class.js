@@ -20,8 +20,10 @@ class World {
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
-    window.requestAnimationFrame(this.run.bind(this));
-    this.background_music.play();
+    setTimeout(() => {
+      this.run()
+      this.background_music.play();
+    }, 2000);
   }
 
   /**
