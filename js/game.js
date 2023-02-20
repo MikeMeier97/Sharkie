@@ -40,10 +40,14 @@ function showInfo() {
   if (!infoActiv) {
     document.getElementById("infoPopup").classList.remove("d-none");
     document.getElementById("popUpContent").classList.add("bg-black");
+    document.getElementById('canvas').classList.add('d-none');
+    document.getElementById('controllPanel').classList.add('d-none');
     infoActiv = true;
   } else {
     document.getElementById("infoPopup").classList.add("d-none");
     document.getElementById("popUpContent").classList.remove("bg-black");
+    document.getElementById('canvas').classList.remove('d-none');
+    document.getElementById('controllPanel').classList.remove('d-none');
     infoActiv = false;
   }
 }
