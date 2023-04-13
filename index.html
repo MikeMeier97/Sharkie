@@ -10,7 +10,7 @@
     <title>Sharkie</title>
   </head>
   <body>
-    <div class="headIcons">
+    <div id="headIcons" class="d-none">
       <img
         onclick="showInfo()"
         id="infoPopupIcon"
@@ -43,9 +43,11 @@
         />
         <div class="d-none" id="game">
           <div class="topPanel"></div>
-          <h1 class="gameTitle">Sharkie</h1>
-          <canvas id="canvas" width="720" height="480"></canvas>
-          <div class="footerPanel">
+          <h1 class="d-none" id="gameTitle">Sharkie</h1>
+          <div id="loader" class="d-none"></div>
+          <p id="loaderText" class="d-none">Loading...</p>
+          <canvas class="d-none" id="canvas" width="720" height="480"></canvas>
+          <div id="footerPanel" class="d-none">
             <div id="controllPanel">
               <div class="controller">
                 <img src="./assets/icons/backward.png" id="btnLeft" alt="backward" />

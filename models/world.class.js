@@ -3,7 +3,7 @@ class World {
   level = level1;
   canvas;
   ctx;
-  mute = false;
+  mute = false; 
   keyboard;
   camera_x = 0;
   statusBar = new Statusbar();
@@ -15,29 +15,43 @@ class World {
   bottle_sound = new Audio("./audio/poison-collected.wav");
 
   constructor(canvas) {
+    document.getElementById('loader').classList.remove('d-none');
+    document.getElementById('loaderText').classList.remove('d-none');
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
     setTimeout(() => {
+      document.getElementById('loader').classList.add('d-none');
+      document.getElementById('loaderText').classList.add('d-none');
       this.run();
       this.background_music.play();
-    }, 2000);
+      this.canvas.classList.remove("d-none");
+      document.getElementById('gameTitle').classList.remove('d-none');
+      document.getElementById('headIcons').classList.remove('d-none');
+      document.getElementById('footerPanel').classList.remove('d-none');
+    }, 5000);
   }
 
   /**
    * music will stop if someone hit the music button in the top
    */
   stopBackgroundMusic() {
+    const soundIcon = document.getElementById("sound");
     if (!this.mute) {
-      document.getElementById("sound").src = "./assets/icons/musicOff.png";
+      soundIcon.src = "./assets/icons/musicOff.png";
       this.background_music.pause();
-      this.mute = true;
+      this.level.enemies[15].boss_background_music.pause();
+      this.mute = true; 
+    } else if (this.level.enemies[15].boss_spawned) {
+      soundIcon.src = "./assets/icons/musicOn.png";
+      this.level.enemies[15].boss_background_music.play();
+      this.mute = false; 
     } else {
-      document.getElementById("sound").src = "./assets/icons/musicOn.png";
+      soundIcon.src = "./assets/icons/musicOn.png";
       this.background_music.play();
-      this.mute = false;
+      this.mute = false; 
     }
   }
 
@@ -161,12 +175,19 @@ class World {
         let bottle = new ThrowableObject(this.character.x, this.character.y);
         this.throwableObjects.push(bottle);
         this.character.bottleLvl -= 20;
-        setTimeout(() => {
-          this.throwableObjects.splice(0, 1);
-        }, 1000);
+        this.deletBubble();
         this.bottleBar.setPercentage(this.character.bottleLvl);
       }
-    }, 5);
+    }, 100);
+  }
+
+  /**
+   * delet the bubble when out of range
+   */
+  deletBubble() {
+    setTimeout(() => {
+      this.throwableObjects.splice(0, 1);
+    }, 500);
   }
 
   /**

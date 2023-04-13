@@ -27,7 +27,7 @@ body {
   top: 10vh; 
   width: 80vw;
 }
-.gameTitle {
+#gameTitle {
   margin-top: 4vh;
   margin-bottom: 4vh;
 }
@@ -149,7 +149,7 @@ canvas {
 #controllPanel img{
    width: 60px;
 }
-.footerPanel {
+#footerPanel {
   position: relative;
   bottom: 20vh; 
 }
@@ -157,12 +157,32 @@ canvas {
   #controllPanel{
     gap: 250px;
   }
-  .footerPanel {
+  #footerPanel {
     bottom: 80px;
   }
 }
+
+#loader {
+  display: flex;
+  margin-top: 45vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;  
+  border: 8px solid #f3f3f3ce;
+  border-radius: 80%;
+  border-top: 8px solid #3498db;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite;
+  z-index: 100;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 @media only screen and (max-height: 800px){
-  .gameTitle {
+  #gameTitle {
     display: none;
   }
   canvas{
@@ -183,7 +203,7 @@ canvas {
       gap: 40vw;
       object-fit: cover;
     }
-    .footerPanel {
+    #footerPanel {
       bottom: 0;
     }
 }

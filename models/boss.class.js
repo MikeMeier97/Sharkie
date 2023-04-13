@@ -6,6 +6,13 @@ class Endboss extends MovableObject {
   indexTimeOut = 0; 
   timeOut = true; 
   isDead = false; 
+  offset = {
+    // hitbox adjustment
+    top: 100,
+    left: 0,
+    right: 0,
+    bottom: 60,
+  };
   IMAGES_BOSS_INTRO = [
     "./assets/img/enemy/Boss/Introduce/1.png",
     "./assets/img/enemy/Boss/Introduce/2.png",
