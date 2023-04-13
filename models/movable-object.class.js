@@ -68,7 +68,7 @@ class MovableObject extends DrawableObject {
    * getting the time of the hit for a 1 second animation
    */
   hit() {
-    this.energy -= 5;
+    this.energy -= 0.5;
     if (this.energy < 0) {
       this.energy = 0;
     } else {

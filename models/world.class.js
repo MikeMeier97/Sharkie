@@ -21,7 +21,7 @@ class World {
     this.draw();
     this.setWorld();
     setTimeout(() => {
-      this.run()
+      this.run();
       this.background_music.play();
     }, 2000);
   }
@@ -42,10 +42,10 @@ class World {
   }
 
   /**
-   * Checking for colliding with someone 
-   * @param {obj} mo 
-   * @param {obj} object 
-   * @returns 
+   * Checking for colliding with someone
+   * @param {obj} mo
+   * @param {obj} object
+   * @returns
    */
   isColliding(mo, object) {
     return (
@@ -57,24 +57,26 @@ class World {
   }
 
   /**
-   * checks the buttle for collision 
+   * checks the buttle for collision
    */
   checkCollisionBubbleEnemy() {
-    if (this.throwableObjects.length > 0) {
-      this.level.enemies.forEach((enemy, enemyIndex) => {
-        this.throwableObjects.forEach((bottle, bottleIndex) => {
-          if (this.isColliding(enemy, bottle)) {
-            this.hitEnemy(enemyIndex);
-            this.throwableObjects.splice(bottleIndex, 1);
-          }
+    setInterval(() => {
+      if (this.throwableObjects.length > 0) {
+        this.level.enemies.forEach((enemy, enemyIndex) => {
+          this.throwableObjects.forEach((bottle, bottleIndex) => {
+            if (this.isColliding(enemy, bottle)) {
+              this.hitEnemy(enemyIndex);
+              this.throwableObjects.splice(bottleIndex, 1);
+            }
+          });
         });
-      });
-    }
+      }
+    }, 5);
   }
 
   /**
-   * sharkie hits an enemy 
-   * @param {obj} enemy 
+   * sharkie hits an enemy
+   * @param {obj} enemy
    */
   hitEnemy(enemy) {
     if (enemy == 15) {
@@ -86,84 +88,89 @@ class World {
   }
 
   /**
-   * checks for hitting a enemy 
+   * checks for hitting a enemy
    */
   checkCollisionsEnemy() {
-    this.level.enemies.forEach((enemy) => {
-      if (this.isColliding(enemy, this.character)) {
-        this.character.hit();
-        this.statusBar.setPercentage(this.character.energy);
-      }
-    });
+    setInterval(() => {
+      this.level.enemies.forEach((enemy) => {
+        if (this.isColliding(enemy, this.character)) {
+          this.character.hit();
+          this.statusBar.setPercentage(this.character.energy);
+        }
+      });
+    }, 10);
   }
 
   /**
    * checks for hitting a coin
    */
   checkCollisionsCoin() {
-    this.level.coins.forEach((coin, coinIndex) => {
-      if (this.isColliding(coin, this.character)) {
-        if (this.character.coinLvl < 100) {
-          this.character.coinLvl += 20;
-          this.coin_sound.play();
-          this.coinBar.setPercentage(this.character.coinLvl);
-          this.level.coins.splice(coinIndex, 1);
-        }
-      }
-    });
-  }
-
-  /**
-   * checks for hitting a bottle 
-   */
-  checkCollisionsBottle() {
-    this.level.bottle.forEach((bottle, bottleIndex) => {
-      if (this.isColliding(bottle, this.character)) {
-        if (this.character.bottleLvl < 100) {
-          this.character.bottleLvl += 20;
-          this.bottle_sound.play();
-          this.bottleBar.setPercentage(this.character.bottleLvl);
-          this.level.bottle.splice(bottleIndex, 1);
-        }
-      }
-    });
-  }
-
-  /**
-   * this function will animate the checking functions evry 0,05 sec. 
-   */
-  run() {
     setInterval(() => {
-      this.checkCollisionsEnemy();
-      this.checkCollisionsCoin();
-      this.checkCollisionsBottle();
-      this.checkThrowobjects();
-      this.checkCollisionBubbleEnemy();
+      this.level.coins.forEach((coin, coinIndex) => {
+        if (this.isColliding(coin, this.character)) {
+          if (this.character.coinLvl < 100) {
+            this.character.coinLvl += 20;
+            this.coin_sound.play();
+            this.coinBar.setPercentage(this.character.coinLvl);
+            this.level.coins.splice(coinIndex, 1);
+          }
+        }
+      });
     }, 50);
   }
 
   /**
-   * shoot the bubble 
+   * checks for hitting a bottle
    */
-  checkThrowobjects() {
-    if (
-      this.keyboard.D &&
-      this.character.bottleLvl > 0 &&
-      this.throwableObjects == 0
-    ) {
-      let bottle = new ThrowableObject(this.character.x, this.character.y);
-      this.throwableObjects.push(bottle);
-      this.character.bottleLvl -= 20;
-      setTimeout(() => {
-        this.throwableObjects.splice(0, 1);
-      }, 1000);
-      this.bottleBar.setPercentage(this.character.bottleLvl);
-    }
+  checkCollisionsBottle() {
+    setInterval(() => {
+      this.level.bottle.forEach((bottle, bottleIndex) => {
+        if (this.isColliding(bottle, this.character)) {
+          if (this.character.bottleLvl < 100) {
+            this.character.bottleLvl += 20;
+            this.bottle_sound.play();
+            this.bottleBar.setPercentage(this.character.bottleLvl);
+            this.level.bottle.splice(bottleIndex, 1);
+          }
+        }
+      });
+    }, 5);
   }
 
+  /**
+   * this function will animate the checking functions evry 0,05 sec.
+   */
+  run() {
+    this.checkCollisionsEnemy();
+    this.checkCollisionsCoin();
+    this.checkCollisionsBottle();
+    this.checkThrowobjects();
+    this.checkCollisionBubbleEnemy();
+  }
 
   /**
-   * draw the elements on the canvas. 
+   * shoot the bubble
+   */
+  checkThrowobjects() {
+    setInterval(() => {
+      if (
+        this.keyboard.D &&
+        this.character.bottleLvl > 0 &&
+        this.throwableObjects == 0
+      ) {
+        let bottle = new ThrowableObject(this.character.x, this.character.y);
+        this.throwableObjects.push(bottle);
+        this.character.bottleLvl -= 20;
+        setTimeout(() => {
+          this.throwableObjects.splice(0, 1);
+        }, 1000);
+        this.bottleBar.setPercentage(this.character.bottleLvl);
+      }
+    }, 5);
+  }
+
+  /**
+   * draw the elements on the canvas.
    */
   draw() {
     try {
@@ -186,7 +193,8 @@ class World {
       requestAnimationFrame(function () {
         self.draw();
       });
-    } catch (e) { // if one picture was not found we send you an error :) 
+    } catch (e) {
+      // if one picture was not found we send you an error :)
       console.warn("Error loading image", e);
       console.log("Could not load image:", this.img);
     }
@@ -194,7 +202,7 @@ class World {
 
   /**
    * add a object to canvas
-   * @param {obj} objects 
+   * @param {obj} objects
    */
   addObjectsToMap(objects) {
     objects.forEach((o) => {
@@ -202,10 +210,9 @@ class World {
     });
   }
 
-
   /**
-   * the object looks in the right direction in wich it also swims 
-   * @param {obj} mo 
+   * the object looks in the right direction in wich it also swims
+   * @param {obj} mo
    */
   addToMap(mo) {
     if (mo.otherDirection) {
@@ -220,7 +227,7 @@ class World {
   }
 
   /**
-   * givs the mobs the world and his functions  
+   * givs the mobs the world and his functions
    */
   setWorld() {
     this.character.world = this;
@@ -230,8 +237,8 @@ class World {
   }
 
   /**
-   * the image will flippt 
-   * @param {obj} mo 
+   * the image will flippt
+   * @param {obj} mo
    */
   flipImage(mo) {
     this.ctx.save();
@@ -241,8 +248,8 @@ class World {
   }
 
   /**
-   * the image will flippt back 
-   * @param {obj} mo 
+   * the image will flippt back
+   * @param {obj} mo
    */
   flipImageBack(mo) {
     mo.x = mo.x * -1;
