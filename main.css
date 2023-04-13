@@ -15,16 +15,16 @@ body {
   background-position: center;
   background-size: cover;
 }
-.bg-black{
+.bg-black {
   background-color: rgba(0, 0, 0, 0.404);
 }
 .popUpContent {
   width: 100vw;
-  height: 100vh; 
+  height: 100vh;
 }
-.instructions{
+.instructions {
   position: absolute;
-  top: 10vh; 
+  top: 10vh;
   width: 80vw;
 }
 #gameTitle {
@@ -40,7 +40,7 @@ body {
 }
 canvas {
   background-color: black;
-  display: block; 
+  display: block;
 }
 .gameOver {
   height: 100vh;
@@ -59,43 +59,43 @@ canvas {
 }
 .tryAgainIconwin {
   position: absolute;
-  top: 70vh; 
+  top: 70vh;
   width: 300px;
 }
-.winscreen{
+.winscreen {
   height: 100vh;
   width: 100vw;
 }
-.sharkieIMGStart { 
-  margin-top: 5vh; 
+.sharkieIMGStart {
+  margin-top: 5vh;
   width: 300px;
   height: 300px;
 }
 .startTitle {
-  margin-top: 10vh; 
+  margin-top: 10vh;
   font-size: 80px;
 }
-.d-none{
-  display: none !important; 
+.d-none {
+  display: none !important;
 }
-.d-flex{
-  display: flex !important; 
+.d-flex {
+  display: flex !important;
 }
 .topPanel img {
   width: 30px;
 }
-.topPanel{
+.topPanel {
   position: relative;
   top: 200px;
   left: 330px;
 }
-#startScreen{
+#startScreen {
   height: 100vh;
-  display: flex; 
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
-#controllPanel  {
+#controllPanel {
   opacity: 0.7;
   display: none;
   z-index: 0;
@@ -103,24 +103,24 @@ canvas {
 
 .infoIcon {
   position: absolute;
-  top: 20px; 
-  left: 93vw; 
+  top: 20px;
+  left: 93vw;
   width: 3vw;
 }
 #fullscreen {
   width: 3vw;
-  position: absolute; 
-  top: 20px; 
+  position: absolute;
+  top: 20px;
   left: 83vw;
 }
 #sound {
   width: 3vw;
   position: absolute;
-  top: 20px; 
+  top: 20px;
   left: 88vw;
 }
 .icon {
-  border: 2px solid white; 
+  border: 2px solid white;
   border-radius: 3rem;
   padding: 2px;
   box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.2);
@@ -129,88 +129,165 @@ canvas {
   cursor: pointer;
 }
 
-.gameOverTitle{
+.gameOverTitle {
   width: 80vw;
 }
 #game {
   max-height: 100vh;
-  display: flex; 
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .startButton {
-  margin-top: 10vh; 
+  margin-top: 10vh;
   width: 200px;
 }
 .pointer:hover {
   cursor: pointer;
 }
-#controllPanel img{
-   width: 60px;
+#controllPanel img {
+  width: 60px;
 }
 #footerPanel {
   position: relative;
-  bottom: 20vh; 
+  bottom: 20vh;
 }
-@media only screen and (max-height: 500px){
-  #controllPanel{
+@media only screen and (max-height: 500px) {
+  #controllPanel {
     gap: 250px;
   }
   #footerPanel {
     bottom: 80px;
   }
 }
-
+#loaderText {
+  font-size: 42px;
+  margin-top: 20px;
+}
 #loader {
-  display: flex;
-  margin-top: 45vh;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;  
-  border: 8px solid #f3f3f3ce;
-  border-radius: 80%;
-  border-top: 8px solid #3498db;
-  width: 70px;
-  height: 70px;
-  animation: spin 1s linear infinite;
-  z-index: 100;
+  margin-top: 35vh;
+  width: 120px;
+  height: 150px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(#ddd 50%, #bbb 51%),
+    linear-gradient(#ddd, #ddd), linear-gradient(#ddd, #ddd),
+    radial-gradient(ellipse at center, #aaa 25%, #eee 26%, #eee 50%, #0000 55%),
+    radial-gradient(ellipse at center, #aaa 25%, #eee 26%, #eee 50%, #0000 55%),
+    radial-gradient(ellipse at center, #aaa 25%, #eee 26%, #eee 50%, #0000 55%);
+  background-position: 0 20px, 45px 0, 8px 6px, 55px 3px, 75px 3px, 95px 3px;
+  background-size: 100% 4px, 1px 23px, 30px 8px, 15px 15px, 15px 15px, 15px 15px;
+  position: relative;
+  border-radius: 6%;
+  animation: shake 3s ease-in-out infinite;
+  transform-origin: 60px 180px;
+}
+
+#loader:before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 100%;
+  width: 7px;
+  height: 5px;
+  background: #aaa;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 102px 0 #aaa;
+}
+
+#loader:after {
+  content: "";
+  position: absolute;
+  width: 95px;
+  height: 95px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 20px;
+  background-color: #bbdefb;
+  background-image: linear-gradient(
+      to right,
+      #0004 0%,
+      #0004 49%,
+      #0000 50%,
+      #0000 100%
+    ),
+    linear-gradient(135deg, #64b5f6 50%, #607d8b 51%);
+  background-size: 30px 100%, 90px 80px;
+  border-radius: 50%;
+  background-repeat: repeat, no-repeat;
+  background-position: 0 0;
+  box-sizing: border-box;
+  border: 10px solid #ddd;
+  box-shadow: 0 0 0 4px #999 inset, 0 0 6px 6px #0004 inset;
+  animation: spin 3s ease-in-out infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-@media only screen and (max-height: 800px){
-  #gameTitle {
-    display: none;
+  0% {
+    transform: rotate(0deg);
   }
-  canvas{
-    margin-bottom: 5vh;
-    margin-top: 5vh;
+
+  50% {
+    transform: rotate(360deg);
+  }
+
+  75% {
+    transform: rotate(750deg);
+  }
+
+  100% {
+    transform: rotate(1800deg);
   }
 }
+
+@keyframes shake {
+  65%,
+  80%,
+  88%,
+  96% {
+    transform: rotate(0.5deg);
+  }
+
+  50%,
+  75%,
+  84%,
+  92% {
+    transform: rotate(-0.5deg);
+  }
+
+  0%,
+  50%,
+  100% {
+    transform: rotate(0);
+  }
+}
+canvas {
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+}
+
 /* Smartphones width */
 @media only screen and (max-width: 720px) {
-    canvas {
-        width: 100%;
-    }
-    #fullscreen {
-      display: none;
-    }
-    #controllPanel{
-      display: flex;
-      gap: 40vw;
-      object-fit: cover;
-    }
-    #footerPanel {
-      bottom: 0;
-    }
+  canvas {
+    width: 100%;
+  }
+  #fullscreen {
+    display: none;
+  }
+  #controllPanel {
+    display: flex;
+    gap: 40vw;
+    object-fit: cover;
+  }
+  #footerPanel {
+    bottom: 0;
+  }
 }
 
-
 @media only screen and (max-width: 550px) {
-  #controllPanel{
+  #controllPanel {
     gap: 20vw;
   }
 }
@@ -229,13 +306,13 @@ canvas {
 }
 /* Smartphone height */
 @media only screen and (max-height: 480px) {
-    canvas {
-        height: 100vh;
-    }
+  canvas {
+    height: 100vh;
+  }
 }
-@media(max-height: 500px) {
-  canvas{
-    margin: 0; 
+@media (max-height: 500px) {
+  canvas {
+    margin: 0;
   }
   .sharkieIMGStart {
     display: none;
