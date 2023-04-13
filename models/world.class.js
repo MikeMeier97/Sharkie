@@ -31,7 +31,7 @@ class World {
       document.getElementById('gameTitle').classList.remove('d-none');
       document.getElementById('headIcons').classList.remove('d-none');
       document.getElementById('footerPanel').classList.remove('d-none');
-    }, 5000);
+    }, 8000);
   }
 
   /**
