@@ -61,6 +61,10 @@ canvas {
   position: absolute;
   top: 70vh;
   width: 300px;
+  z-index: 100;
+}
+.tryAgainIconwin:hover {
+  cursor: pointer;
 }
 .winscreen {
   height: 100vh;
