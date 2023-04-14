@@ -49,7 +49,6 @@ function showInfo() {
     document.getElementById("popUpContent").classList.remove("bg-black");
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('controllPanel').classList.remove('d-none');
-    document.getElementById('startScreen').classList.remove('d-none');
     infoActiv = false;
   }
 }
