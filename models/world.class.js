@@ -31,7 +31,7 @@ class World {
       document.getElementById('gameTitle').classList.remove('d-none');
       document.getElementById('headIcons').classList.remove('d-none');
       document.getElementById('footerPanel').classList.remove('d-none');
-    }, 8000);
+    }, 6000);
   }
 
   /**
@@ -79,7 +79,7 @@ class World {
         this.level.enemies.forEach((enemy, enemyIndex) => {
           this.throwableObjects.forEach((bottle, bottleIndex) => {
             if (this.isColliding(enemy, bottle)) {
-              this.hitEnemy(enemyIndex);
+              this.hitEnemy(enemy, enemyIndex);
               this.throwableObjects.splice(bottleIndex, 1);
             }
           });
@@ -92,12 +92,12 @@ class World {
    * sharkie hits an enemy
    * @param {obj} enemy
    */
-  hitEnemy(enemy) {
-    if (enemy == 15) {
-      this.level.enemies[enemy].energy -= 25;
-      this.level.enemies[enemy].hit();
+  hitEnemy(enemy, enemyIndex) {
+    if (enemy.id == 'boss') {
+      this.level.enemies[enemyIndex].energy -= 25;
+      this.level.enemies[enemyIndex].hit();
     } else {
-      this.level.enemies[enemy].energy -= 10;
+      this.level.enemies[enemyIndex].energy -= 10;
     }
   }
 

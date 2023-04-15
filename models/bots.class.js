@@ -24,13 +24,13 @@ class PufferFish extends MovableObject {
     "./assets/img/enemy/PufferFish/4.DIE/1.Dead2.png",
     "./assets/img/enemy/PufferFish/4.DIE/1.Dead3.png",
   ];
-  constructor(x, y, id) {
+  constructor(x, y, speed) {
     super().loadImage("./assets/img/enemy/PufferFish/1.Swim/1.swim1.png");
     this.loadImages(this.IMAGES_PUFFERFISH);
     this.loadImages(this.IMAGES_PUFFERFISH_DEAD);
     this.x = x;
     this.y = y;
-    this.speed = 0.4 + Math.random() * 3;
+    this.speed = speed;
     this.animate();
   }
 
@@ -81,13 +81,13 @@ class JellyFish extends MovableObject {
     "./assets/img/enemy/JellyFish/Dead/Lila/L3.png",
     "./assets/img/enemy/JellyFish/Dead/Lila/L4.png",
   ];
-  constructor(x, y, id) {
+  constructor(x, y, speed) {
     super().loadImage("./assets/img/enemy/JellyFish/SuperDangerous/Pink1.png");
     this.loadImages(this.IMAGES_JELLYFISH);
     this.loadImages(this.IMAGES_JELLYFISH_DEAD);
     this.x = x;
     this.y = y;
-    this.speed = 0.4 + Math.random() * 1;
+    this.speed = speed;
     this.animate();
   }
 
@@ -126,7 +126,7 @@ class JellyFish extends MovableObject {
   jellyFishIsDead() {
     setInterval(() => {
       this.playAnimation(this.IMAGES_JELLYFISH_DEAD);
-      this.y -= 10;
+      this.y -= 20;
     }, 50);
     this.isDead = true;
   }
