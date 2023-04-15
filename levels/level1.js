@@ -11,9 +11,9 @@ function initLevel() {
      * add the bots 
      */
     [
-      new PufferFish(1300, 250, 2),
-      new PufferFish(1300, 20, 2),
-      new PufferFish(3000, 350, 7),
+      new PufferFish(1800, 250, 2),
+      new PufferFish(1800, 20, 2),
+      new PufferFish(3500, 350, 7),
       new PufferFish(2000, 10, 2),
       new PufferFish(2100, 80, 2),
       new PufferFish(2200, 160, 2),
